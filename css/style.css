@@ -1,0 +1,1175 @@
+/* Padronização do site */
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+.conteudo {
+    width: 1400px;
+    height: inherit;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    width: 100%;
+    height: 170px;
+    background-color: #FC4A1A;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    background-color: #FC4A1A;  
+    z-index: 999;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.ocupa_cabecalho {
+    width: 100%;
+    height: 80px;
+}
+
+#caixa_logo {
+    width: 145px;
+    height: inherit;
+    background-image: url(../imagens/header/Free_Sample_By_Wix.jfif);
+    background-repeat: no-repeat;
+    background-size: 115px;
+    background-position: center;
+    
+    float: left;
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+#caixa_menu {
+    float: left;
+    width: 770px;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 75px;
+}
+
+#menu {
+    width: inherit;
+    height: inherit;
+    height: inherit;
+}
+
+.menu_itens {
+    width: 100px;
+    height: inherit;
+    margin-left: 10px;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 8px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.menu_itens:hover {
+    cursor: pointer;
+    font-size: 19px;
+}
+
+#container_login {
+    width: 410px;
+    height: 50px;
+    float: left;
+}
+
+#login_txt {
+    width: 65px;
+    height: 21px;
+    margin-left: 5px;
+    margin-top: 38px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#login_txt:hover {
+    cursor: pointer;
+    font-size: 19px;
+}
+
+#form_container {
+    width: inherit;
+    height: 180px;
+    margin-top: 15px;
+}
+
+#caixa_login {
+    width: 200px;
+    height: 220px;
+    box-shadow: 7px 7px rgba(0,0,0,0.8);
+    margin-top: 15px;
+    margin-left: -65px;
+    border-radius: 10px;
+    padding-top: 1px;
+    display: none;
+}
+
+#seta_branca {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    float: right;
+    transition: 0.5s;
+}
+
+.mostrarMenu {
+    display: block;
+}
+
+.form_login {
+    margin-top: 2px;
+    margin-left: 17px;
+    margin-bottom: 10px;
+}
+
+.input_form_login {
+    height: 30px;
+    border-radius: 10px; 
+}
+
+#botao_submit {
+    width: 40px;
+    background-color: white;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 79px;
+    text-align: center;
+}
+
+/* SLIDE */
+#slide {
+    width: 100%;
+    height: 700px;
+}
+
+#slide .conteudo {
+    width: 100%;
+}
+
+.slide-image {
+    width: 100%;
+    height: 700px;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  height: inherit;
+    margin-left: auto;
+    margin-right: auto;
+  background-color: red;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    width: 100%;
+    height: inherit;
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    width: 50px;
+    position: absolute;
+    margin-top: -400px;
+    padding: 16px;
+    color: yellow;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 80px;
+    user-select: none;
+    text-align: center;
+}
+
+/* Position the "next button" to the right */
+.next {
+  left: 80%;
+}
+
+.prev {
+  left: 15%;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  margin-left: 10px;
+  margin-top: 15px;
+  width: 50px;
+  height: 10px;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+} 
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Produtos */
+#produtos {
+    width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    height: auto;
+    background-color: white;
+}
+
+#produtos .conteudo {
+    min-height: inherit;
+    height: auto;
+    background-color: white;
+}
+
+#filtro_navegacao {
+    width: 200px;
+    min-height: 120px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: auto;
+    background-color: #FC4A1A;
+    float: left;
+}
+
+.filtro_navegacao_itens {
+    width: inherit;
+    height: 50px;
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.filtro_navegacao_text {
+    width: 90px;
+    height: 20px;
+    margin-left: 55px;
+    float: left;
+}
+
+.filtro_navegacao_icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 1px;
+    margin-left: -5px;
+    float: left;
+}
+
+#lista_produtos {
+    width: 1200px;
+    min-height: inherit;
+    height: auto;
+    float: left;
+    background-color: white;
+}
+
+.produtos_itens {
+    width: 280px;
+    height: 350px;
+    margin-left: 80px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 4px 4px 5px 5px rgba(0,0,0,0.4);
+    float: left;
+}
+
+.produtos_itens:hover {
+    cursor: pointer;
+    transition: 0.7s;
+    transform: scale(1.05);
+}
+
+.produtos_itens_img {
+    width: 180px;
+    height: 155px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    background-position: center;
+    background-size: contain;
+}
+
+.produtos_itens_carac {
+    width: 220px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 16px;
+    margin-top: 7px;
+}
+
+.produtos_imagens {
+    width: 180px;
+    height: 155px;
+}
+
+/* Redes Sociais */
+#redes_sociais {
+    width: 65px;
+    height: 150px;
+    margin-top: 5px;
+    margin-left: 1420px;
+    position: fixed;
+}
+
+.rede_social {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+#facebook {
+    background-image: url(../icons/index/facebook.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#instagram {
+    background-image: url(../icons/index/instagram.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#twitter {
+    background-image: url(../icons/index/twitter.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Footer */
+footer .conteudo {
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+#footer_informacoes {
+    width: 1350px;
+    height: 120px;
+}
+
+#botao_sistema_interno {
+    width: 150px;
+    height: 70px;
+    margin-top: 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 20px;
+    background-image: linear-gradient(to top, #136322, #1b8f31);
+    color: white;
+    border-radius: 15px;
+    float: left;
+}
+
+#botao_sistema_interno:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+}
+
+#endereco_info {
+    width: 450px;
+    height: 25px;
+    float:left; 
+    margin-top: 85px;
+    margin-left: 300px;;
+}
+
+#aplicativo_info {
+    width: 300px;
+    height: 100px;
+    margin-top: 12px;
+    margin-left: 1000px;
+}
+
+#aplicativo_info_imagem {
+    width: 80px;
+    height: 85px;
+    float: left;
+    background-image: url(../imagens/footer/android.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#aplicativo_info_botao {
+    width: 206px;
+    height: 70px;
+    margin-top: 8px;
+    margin-left: 10px;
+    text-align: center;
+    padding-top: 22px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to top, #136322, #1b8f31);
+    color: white;
+    border-radius: 15px;
+    float: left;
+}
+
+#aplicativo_info_botao:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+}
+
+/* PÁGINA DE CURIOSIDADES */
+
+/* Benefícios a Saúde */
+#beneficios_saude {
+    width: 100%;
+    height: 600px;
+    background-color: #3CC47C;
+}
+
+#beneficios_saude .textos{
+    padding-top: 50px;
+}
+
+#beneficios_saude .conteudo {
+    padding-top: 40px;
+}
+
+.imagem_curiosidades {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.titulos {
+    width: 400px;
+    height: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.container_imagemtexto {
+    width: 850px;
+    height: 450px;
+}
+
+.imagens {
+    width: 400px;
+    height: 400px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#laranja_imagem {
+    background-image: url(../imagens/curiosidades/laranjas.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#uva_imagem {
+    background-image: url(../imagens/curiosidades/uvas.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#maca_imagem {
+    background-image: url(../imagens/curiosidades/maca.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textos {
+    width: 450px;
+    height: 400px;
+    padding-top: 15px;  
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    float: left;
+}
+
+/* Benefícios */
+#beneficios_laranja {
+    width: 100%;
+    height: 600px;
+    background-image: linear-gradient(to top, #e69500, #ffa600);
+}
+
+#beneficios_laranja .conteudo {
+    padding-top: 40px;
+}
+
+.subtitulos {
+    width: 450px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#beneficios_uva {
+    width: 100%;
+    height: 600px;
+    background-image: linear-gradient(to top, #8700b0, #ae00e3);
+}
+
+#beneficios_uva .conteudo {
+    padding-top: 40px;
+}
+
+#beneficios_maca {
+    width: 100%;
+    height: 600px;
+    background-color: #e34949;
+}
+
+#beneficios_maca {
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+/* SOBRE A EMPRESA */
+#sobre_nos {
+    width: 100%;
+    height: 939px;
+    font-family: 'Comfortaa', sans-serif;
+    background-image: url(../imagens/sobre/imagem-principal.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#vidro {
+    width: 100%;
+    height: inherit;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#sobre_nos .conteudo {
+    padding-top: 190px;
+    box-sizing: border-box;
+}
+
+.titulo_sobre {
+    width: 800px;
+    height: 120px;
+    color: white;
+    padding-top: 120px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#nome_site {
+    font-size: 50px;
+    color: #f06c00;
+    font-family: 'Indie Flower', sans-serif;
+}
+
+#titulo_sobre_2 {
+    width: 1000px;
+    height: 50px;
+    font-size: 26px;
+}
+
+.submenu {
+    width: inherit;
+    min-height: 40px;
+    margin-top: 10px;
+    height: auto;
+    display: none;
+}
+
+.submenu_itens {
+    width: inherit;
+    height: 40px;
+}
+
+.menu_itens:hover > .submenu {
+    display: block;
+}
+
+.bkg_preto {
+    background-color: #121212;
+}
+
+.bkg_laranja {
+    background-color: #FC4A1A;
+    transition: 1s;
+}
+
+.bkg_transparente {
+    background-color: transparent;
+    transition: 2s;
+}
+
+#buttom_seta {
+    width: 70px;
+    height: 70px;
+    animation: oscilar;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform: rotate(90deg);
+}
+
+#buttom_seta:hover {
+    animation-play-state: paused;
+}
+
+@keyframes oscilar {
+    from {margin-top: 225px;}
+    to {margin-top: 200px;}
+}
+
+/* SOBRE A EMPRESA */
+#safras {
+    width: 100%;
+    height: 830px;
+    background-image: url(../imagens/sobre/img1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#safras_pelicula {
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 18, 16, 0.8);
+}
+
+#safras .conteudo {
+    padding-top: 130px;
+    box-sizing: border-box;
+}
+
+.sobre_titulos {
+    width: 600px;
+    height: 200px;
+    color: white;
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.sobre_textos {
+    width: 700px;
+    height: 250px;
+    margin-top: 20px;
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Lojas */
+#alcance {
+    width: 100%;
+    height: 800px;
+    background-color: white;
+}
+
+#alcance .conteudo {
+    padding-top: 140px;
+    box-sizing: border-box;
+}
+
+#alcance_imagem {
+    width: 512px;
+    height: 512px;
+    margin-left: 120px;
+    background-image: url(../icons/sobre/brasil.png);
+    background-size: contain;
+    float: left;
+}
+
+#alcance_titulo {
+    width: 600px;
+    height: 300px;
+    margin-left: 30px;
+    margin-top: 50px;
+    text-align: left;
+    color: black;
+    float: left;
+}
+
+#alcance_titulo_form {
+    color: black;
+    text-align: left;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#alcance_text_form {
+    margin-top: 20px;
+    font-size: 26px;
+    color: black;
+    text-align: left;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#localize {
+    width: 100%;
+    height: 350px;
+    background-color: #ffc02b;
+}
+
+#localize .conteudo {
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+#localize_text {
+    width: 800px;
+    height: 250px;
+}
+
+#localize_imagem {
+    width: 256px;
+    height: 100%;
+    background-image: url(../imagens/lojas/mapa.png);
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 30px;
+    float: left;
+}
+
+.localize_texto {
+    width: 400px;
+    height: 250px;
+    line-height: 40px;
+    margin-top: 40px;
+    font-family: 'Comfortaa', sans-serif;
+    float: left;
+    color: white;
+}
+
+#localize_titulo {
+    font-size: 32px;
+    margin-left: 10px;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+#localize_texto {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+#lista_lojas {
+    width: 100%;
+    min-height: 670px;
+    height: auto;
+    overflow: hidden;
+}
+
+#lista_lojas .conteudo {
+    padding-top: 50px;
+    box-sizing: border-box;
+    min-height: inherit;
+    height: inherit;
+}
+
+#container_lojas {
+    width: 1280px;
+    min-height: 500px;
+    margin-bottom: 100px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+/* Padronização dos cars para produtos */
+.card {
+    width: 380px;
+    height: 420px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    float: left;
+    background-color: white;
+}
+
+.card:hover {
+    box-shadow: 7px 7px 7px 7px rgba(0,0,0,0.3);
+}
+
+.card_loja:hover {
+    transform: scale(1.05);
+}
+
+.card_imagem {
+    width: 250px;
+    height: 180px;
+    margin-top: 20px;
+}
+
+.card_info {
+    width: 300px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.cards_info {
+    font-family: 'Source sans pro', sans-serif;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.card_imagens {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* Página de Contatos */
+#container_contatos {
+    width: 100%;
+    height: 800px;
+    background-color: white;
+}
+
+#container_contatos .conteudo {
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+#contatos_tabela {
+    width: 850px;
+    height: 600px;
+    background-color: #18b88a;
+    float: left;
+    font-family: 'Source sans pro', sans-serif;
+    font-size: 22px;
+    border-radius: 20px;
+}
+
+#titulo_contatos {
+    width: 500px;
+    height: 400px;
+    margin-left: 40px;
+    float: left;
+}
+
+#contatos_titulo {
+    margin-top: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 42px;
+}
+
+#contatos_texto {
+    font-size: 26px;
+    font-family: 'Source sans pro', sans-serif;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.tabela_campo {
+    width: 360px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.campo_nome {
+    width: 100px;
+    height: 100%;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 10px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.input_contatos {
+    width: 230px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-family: 'Source sans pro', sans-serif;
+    font-size: 18px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+}
+
+.campo_input {
+    width: 230px;
+    height: 30px;
+    float: left;
+}
+
+#contatos_informacoes_esquerda {
+    width: 400px;
+    height: 600px;
+    float: left;
+}
+
+#contatos_informacoes_direita {
+    width: 400px;
+    height: 700px;
+    float: left;
+}
+
+.tabela_campo_textarea {
+    width: 350px;
+    height: 110px;
+    margin-top: 20px;
+}
+
+.campo_input_textarea {
+    width: 230px;
+    height: 90px;
+    float: left;
+}
+
+.input_contatos_textarea {
+    width: 230px;
+    height: 90px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-family: 'Source sans pro', sans-serif;
+    font-size: 18px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+    resize: none;
+}
+
+#campo_tipo_mensagem {
+    margin-top: 20px;
+    width: 260px;
+}
+
+.contatos_radio {
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    margin-left: 15px;
+    float: left;
+}
+
+#radio {
+    width: 150px;
+    height: inherit;
+    float: left;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.radio_mensagem {
+    float: left;
+}
+
+#radio_input {
+    width: 400px;
+    height: 80px;
+}
+
+#container_botao_contatos {
+    width: 150px;
+    height: 75px;
+    margin-top: 60px;
+}
+
+#botao_contatos {
+    width: 80px;
+    height: 50px;
+    font-size: 18px;
+    border: 1px solid black;
+}
+
+/* Página de Promoções */
+#promocoes {
+    width: 100%;
+    height: 350px;
+    background-color: #43de83;
+}
+
+#promocoes .conteudo, #destaques .conteudo {
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+#promocoes_text, #destaques_text {
+    width: 800px;
+    height: 250px;
+}
+
+#promocoes_imagem {
+    width: 256px;
+    height: 100%;
+    background-image: url(../imagens/promocoes/promotion.png);
+    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 30px;
+    float: left;
+}
+
+#destaques_imagem {
+    width: 256px;
+    height: 100%;
+    background-image: url(../imagens/destaques/feature.png);
+    margin-top: -20px;
+    margin-left: 20px;
+    margin-right: 30px;
+    float: left;
+}
+
+#promocoes_texto, #destaques_texto {
+    width: 400px;
+    height: 250px;
+    line-height: 40px;
+    margin-top: 40px;
+    font-family: 'Comfortaa', sans-serif;
+    float: left;
+}
+
+#promocoes_titulo, #destaques_titulo {
+    font-size: 32px;
+    margin-left: 10px;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+#promocoes_textos, #destaques_textos {
+    width: 400px;
+    height: 250px;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-left: 10px;
+    font-family: 'Comfortaa', sans-serif;
+    color: white;
+    float: left;
+}
+
+#lista_promocoes {
+    width: 100%;
+    min-height: 670px;
+    height: auto;
+    overflow: hidden;
+}
+
+#lista_promocoes .conteudo {
+    padding-top: 50px;
+    box-sizing: border-box;
+    min-height: inherit;
+    height: inherit;
+}
+
+#container_promocoes {
+    width: 1280px;
+    min-height: 500px;
+    margin-bottom: 100px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.preco {
+    width: 50px;
+    height: 20px;
+    float: left;
+}
+
+.preco_antigo {
+    float: left;
+    width: 80px;
+    height: 20px;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.preco_atual {
+    float: left;
+    width: 80px;
+    height: 20px;
+    margin-left: 3px;
+    color: green;
+    font-weight: 600;
+}
+
+/* Página de Destaques */
+#destaques {
+    width: 100%;
+    height: 350px;
+    background-color: #f0471a;
+}
+
+#lista_destaques {
+    width: 100%;
+    min-height: 670px;
+    height: auto;
+    overflow: hidden;
+}
+
+#container_destaques {
+    width: 1280px;
+    min-height: 500px;
+    margin-bottom: 100px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}

@@ -63,8 +63,8 @@
                                         Bem-Vindo(a), <?=$rsUsuario['nome'];?> 
                                     <?php } ?>
                                     </p>
-                                    <form name='frmformulario' method='post' action='home.php' class='input_logout'>
-                                        <input type='button' value='Logout' class='button_logout'>
+                                    <form name='frmformulario' method='post' action='bd/logout.php' class='input_logout'>
+                                        <input name="btnLogout" type='submit' value='Logout' class='button_logout'>
                                     </form>
                                 </div>
                             </div>

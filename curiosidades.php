@@ -105,7 +105,7 @@
         <!-- Beneficios do suco à saúde -->
         <?php
     
-            $sql = "SELECT * FROM introducao_curiosidades WHERE id = 1";
+            $sql = "SELECT * FROM introducao_curiosidades WHERE id = 2";
             $select = mysqli_query($conexao, $sql);
             
             if($rsConteudo = mysqli_fetch_array($select))

@@ -10,4 +10,6 @@
 
     define("ERRO_TAMANHO_INVALIDO", "Tamanho da imagem não é permitido");
 
+    define("ERRO_UPLOADED_FILE", "Erro ao mover arquivo para a pasta!");
+
 ?>

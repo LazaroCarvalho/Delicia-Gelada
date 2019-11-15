@@ -66,8 +66,8 @@
                             <img alt="seta" src="icons/sobre/arrow-24-16.png" >
                         </div>
                     </div>
-                    <div class='bkg_preto' id='caixa_login'>
-                        <div class='bkg_preto' id='form_container'>
+                    <div class='bkg_laranja' id='caixa_login'>
+                        <div class='bkg_laranja' id='form_container'>
                             <form name='frmformulario' method='post' action='bd/autenticacao.php'>
                                 <div class='form_login'>
                                     Usuario: <br>

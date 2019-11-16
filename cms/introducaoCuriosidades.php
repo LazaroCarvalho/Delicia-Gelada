@@ -111,11 +111,13 @@
                                     <input name="titulo" placeholder="Insira seu titulo..." type="text" class="input_titulos" maxlength="50" required>
                                     <div id="cont_input">
                                         <div id="cont_imagem">
-                                            <div id="preview-image">
-
-                                            </div>
+                                            <label for="input-image">
+                                                <div id="preview-image">
+                                                    <img src="icons/photo-camera.png" class="preview-icon">
+                                                </div>
+                                            <label>
                                         </div>
-                                        <textarea name="texto" class="input_textos" required></textarea>
+                                        <textarea name="texto" class="input_textos" maxlength="1100" required></textarea>
                                     <div>
                                     <div id="container_color">
                                         <input type="color" name="color" required>

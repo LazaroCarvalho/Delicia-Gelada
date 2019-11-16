@@ -26,6 +26,14 @@ footer .conteudo {
     border-radius: 0px 0px 30px 30px;
 }
 
+@font-face {
+    font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+    font-family: 'Muli', sans-serif;
+}
+
 p {
     font-size: 18px;
     font-family: sans-serif;
@@ -49,6 +57,22 @@ a {
 .imagem_fundo {
     width: inherit;
     height: inherit;
+}
+
+.title-medio {
+    font-size: 36px;
+    width: 290px;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    text-align: center;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.label-medio {
+    font-size: 32px;
+    font-family: 'Open Sans',Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* Classes de estruturação das páginas */
@@ -935,8 +959,10 @@ a {
 
 /* Adm.Curiosidades */
 #adm_curiosidades {
-    padding-top: 30px;
+    padding-top: 80px;
     box-sizing: border-box;
+    background-color:#d4d4d4;
+    
 }
 
 .card_cadastro_conteudo {
@@ -959,8 +985,6 @@ a {
     text-align: center;
     padding-top: 135px;
     box-sizing: border-box;
-    float: left;
-    margin-left: 190px;
 }
 
 .menu_curiosidades {
@@ -982,8 +1006,7 @@ a {
 .input_imagens {
     width: 300px;
     height: 50px;
-    margin-top: -120px;
-    position: absolute;
+    display: none;
 }
 
 #cont_img_titulo {
@@ -1036,6 +1059,10 @@ a {
     border: 1px solid black;
 }
 
+#preview-image:hover {
+    cursor: pointer;
+}
+
 #cont_input {
     width: 100%;
     height: 320px;
@@ -1062,4 +1089,182 @@ a {
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.container-opcoes {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-opcoes {
+    width: 100%;
+    height: 130px;
+    margin-bottom: 20px;
+    background-color: #a1a09d;
+}
+
+.preview-icon {
+    width: 64px;
+    height: 64px;
+    margin-left: 93px;
+    margin-top: 93px;
+}
+
+.novo-conteudo {
+    width: 320px;
+    height: 200px;
+}
+
+.new-icon {
+    width: 38px;
+    height: 38px;
+}
+
+.new-icon:hover {
+    cursor: pointer;
+    margin-top: -2px;
+    width: 42px;
+    height: 42px;
+}
+
+.container-table {
+    width: 1350px;
+    height: 800px;
+    border-radius: 30px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin-top: 50px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-cards {
+    width: 1300px;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.float-left {
+    float: left;
+}
+
+.container-label {
+    width: 550px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+.slc-curiosidades {
+    width: 180px;
+    height: 40px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.card-conteudo {
+    width: 400px;
+    height: 300px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    border-radius: 30px 30px 0 0;
+}
+
+.cont-card {
+    width: 400px;
+    height: 370px;
+    margin-top: 50px;
+    margin-right: 20px;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.card-opcoes {
+    width: 400px;
+    height: 70px;
+    background-color: #121212;
+    border-radius: 0 0 30px 30px;
+}
+
+.card-img {
+    width: 140px;
+}
+
+.card-title {
+    font-size: 32px;
+    margin: 0px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cont-card-img {
+    width: 140px;
+    height: 210px;
+    margin-left: 30px;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+.card-text {
+    width: 220px;
+    height: 210px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    overflow: hidden;
+    font-size: 18px;
+    font-family: 'Muli', sans-serif;
+}
+
+.cont-card-conteudo {
+    width: 100%;
+    height: 220px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-opcoes-icon {
+    width: 42px;
+    height: 42px;
+    margin-top: 11px;
+}
+
+.cont-icon {
+    width: 42px;
+    height: 42px;
+    margin-right: 45px;
+    float: left;
+    text-align: center;
+}
+
+.card-opcoes-icon:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    margin-left: -2px;
+}
+
+.cont-opcoes-icon {
+    width: 261px;
+    height: 42px;
+    margin-left: 86px;
+}
+
+.btn-buscar {
+    width: 100px;
+    height: 45px;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 14px;
+    font-weight: bolder;
+    background-color: #ff6038;
+    margin-left: 20px;
+}
+
+.container-modal {
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0,0,0,0.8);
 }

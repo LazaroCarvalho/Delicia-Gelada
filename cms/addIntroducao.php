@@ -31,6 +31,27 @@
         <title>Bem-vindo ao CMS</title>
         <meta charset="UTF-8">
         <link type="text/css" rel="stylesheet" href="css/style.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.form.js"></script>
+        <script>
+        
+        $(document).ready(function (){
+
+            // Executa quando um arquivo é selecionado na tag input.
+            $("#input-image").live("change", function(){
+
+                // Envia a imagem para o upload e a insere na div de preview.
+                $("#form-image").ajaxForm({
+
+                    target: '#label-preview-image'
+
+                }).submit();
+
+            });
+
+        });
+
+        </script>
     </head>
     <body>
         <div class="imagem_fundo">
@@ -77,37 +98,44 @@
                             </div>
                         </div>
                         <!-- Conteúdo -->
-                        <div class="cms_conteudo">
-                            <div class="center" id="home_titulo">
-                                <div class="card_cadastro_conteudo">
-                                    <form name="formularioConteudo" method="post" action="bd/inserirIntroducaoConteudo.php" enctype="multipart/form-data">
-                                        <h1 class="titulo_card">Título da introdução</h1>
-                                        <input name="titulo" placeholder="Insira seu titulo..." type="text" class="input_titulos" maxlength="50" required>
-                                        <div id="cont_input">
-                                            <div id="cont_imagem">
-                                                <label for="input-image">
-                                                    <div id="preview-image">
-
-                                                    </div>
+                        <div class="cms_conteudo" id="introducaoConteudo">
+                            <div class="card_cadastro_conteudo center">
+                                <form name="formularioConteudo" method="post" action="bd/inserirIntroducaoConteudo.php" enctype="multipart/form-data">
+                                    <h1 class="titulo_card">Título da introdução</h1>
+                                    <input name="titulo" placeholder="Insira seu titulo..." type="text" class="input_titulos" maxlength="50" required>
+                                    <div id="cont_input">
+                                        <div id="cont_imagem">
+                                            <div id="preview-image">
+                                                <label for="input-image" id="label-preview-image">
+                                                    <img src="icons/photo-camera.png" class="preview-icon">
                                                 </label>
                                             </div>
-                                            <textarea name="texto" class="input_textos" maxlength="1100" required></textarea>
-                                        <div>
-                                        <div id="container_color">
-                                            <input type="color" name="color" required>
-                                            <label>Cor de fundo da seção</label>
-                                            <br>
-                                            <input type="color" name="color" required>
-                                            <label>Cor do texto</label>
-                                        <div>
-                                        <div class="container_submit">
-                                            <input name="submitConteudo" type="submit" class="botao_cadastro" value="Salvar">
                                         </div>
-                                    </form>
-                                    <form name="frmImagem" action="bd/upload.php" method="post" id="form-image" enctype="multipart/form-data">
-                                        <input name="imagem" type="file" class="input_imagens" id="input-image">
-                                    </form>
-                                </div>
+                                        <textarea name="texto" class="input_textos" maxlength="1100" required></textarea>
+                                    <div>
+                                    <div class="container_color float-left">
+                                        <input type="color" value="#ffffff" name="color" required>
+                                        <label>Cor de fundo da seção</label>
+                                    <div>
+                                    <div class="container-color-font float-left">
+                                        <label>Cor do texto: </label>
+                                        <select name="colorFont" required>
+                                            <option value="light">
+                                                Light
+                                            </option>
+                                            <option value="dark">
+                                                Dark
+                                            </option> 
+                                        </select>
+                                    </div>
+                                    <div class="container_submit">
+                                        <input name="submitConteudo" type="submit" class="botao_cadastro" value="Salvar">
+                                    </div>
+                                    <input type="hidden" name="modo" value="salvar">
+                                </form>
+                                <form name="frmImagem" action="bd/upload.php" method="post" id="form-image" enctype="multipart/form-data">
+                                    <input name="imagem" type="file" class="input_imagens" id="input-image">
+                                </form>
                             </div>
                         </div>
                     </div>

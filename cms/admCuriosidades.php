@@ -45,12 +45,155 @@
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
-        <script src="js/jquery.js"></script>
         <title>Conteúdo CMS</title>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.form.js"></script>
+        <script>
+        
+            $(document).ready(function () {
+
+                // Modal aparecerá quando um editar for clicado.
+                $('.btn-editar').click(function () {
+
+                    $('.container-modal').fadeIn(500);
+
+                });
+
+                // Modal fecha quando botão de fechar for clicado.
+                $('.close-modal').click(function () {
+
+                    $('.container-modal').fadeOut(500);
+
+                });
+
+                // Abre o menu de opções de conteúdo a serem inseridos.
+                $('.add-conteudo').click(function () {
+
+                    $('.container-opcoes').fadeIn(500);
+
+                });
+
+                $('#close-conteudo').click(function () {
+
+                    $('.container-opcoes').fadeOut(500);
+
+                });
+
+                $("#input-image").live("change", function() {
+
+                    $("#form-image").ajaxForm({
+
+                        target: '.container-image-preview'
+
+                    }).submit();
+
+                });
+
+            });
+
+            // Recebe ID de um registro no banco.
+            function resgatarDados(idRegistro) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "modalIntroducao.php",
+                    data: {codigo:idRegistro, tabela:'introducao_curiosidades'},
+                    success: function(dados) {
+                        $('.cont-modal-conteudo').html(dados);
+                    }
+
+                });
+
+            }
+
+        </script>
     </head>
     <body>
         <div class="container-modal">
+            <div class="modal center">
+                <div class="close-modal">
+                    <img src="icons/erro.png" class="icon-pequeno">
+                </div>
+                <div class="cont-modal-conteudo">
+                </div>
+            </div>
+        </div>
+        <div class="container-opcoes">
+            <div class="cont-opcoes-conteudo center">
+                <div class="close-modal" id="close-conteudo">
+                    <img src="icons/erro.png" class="icon-pequeno">
+                </div>
+                <h1 class="titulo-opcoesConteudo center">Selecione um conteúdo</h1>
+                <div class="cont-opcoes center">
+                    <div class="titulo-opcao txt-center float-left">
+                        <h1 class="opcao-title center">
+                            Introdução
+                        </h1>
+                        <a href="addIntroducao.php">
+                            <div class="container-opcao">
+                                <div class="opcao">
+                                    <div class="linha-titulo-opcao center">
+                                    </div> 
+                                    <div class="opcao-imagem float-left">
+                                        <div class="image-opcao center">
 
+                                        </div>
+                                    </div>
+                                    <div class="opcao-textos float-left" id="texto-opcao-introducao">
+                                        <div class="texto-opcao">
+                                            <div class="textos-opcao-intro">
+
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="titulo-opcao txt-center float-left">
+                        <h1 class="opcao-title center">
+                            Curiosidades
+                        </h1>
+                        <div class="container-opcao">
+                            <div class="opcao">
+                                <div class="linha-titulo-opcao center">
+                                </div> 
+                                <div class="opcao-imagem float-left">
+                                    <div class="image-opcao center">
+
+                                    </div>
+                                </div>
+                                <div class="opcao-textos float-left">
+                                    <div class="linha-grande">
+
+                                    </div>
+                                    <div class="linha-curta">
+
+                                    </div>
+                                    <div class="linha-grande">
+
+                                    </div>
+                                    <div class="linha-curta">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
         </div>
         <div class="imagem_fundo">
             <section class="cms">
@@ -99,7 +242,7 @@
                         <div class="cms_conteudo" id="adm_curiosidades">
                             <div class="novo-conteudo txt-center center">
                                 <h1 class="center title-medio">Inserir novo conteúdo</h1>
-                                <img class="new-icon center" src="icons/plus.png">
+                                <img class="new-icon add-conteudo center" src="icons/plus.png">
                             </div>  
                             <div class="container-table center">
                                 <div class="container-label">
@@ -140,7 +283,7 @@
                                         <div class="card-opcoes">
                                             <div class="cont-opcoes-icon">
                                                 <div class="cont-icon">
-                                                    <a href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                    <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
                                                         <img class="card-opcoes-icon" src="icons/error.png">
                                                     </a>
                                                 </div>
@@ -158,7 +301,9 @@
                                                     <?php } ?>
                                                 </div>
                                                 <div class="cont-icon">
-                                                    <img class="card-opcoes-icon" src="icons/edit.png">
+                                                    <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
+                                                        <img class="card-opcoes-icon" src="icons/edit.png">
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

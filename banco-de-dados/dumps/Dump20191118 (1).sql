@@ -18,6 +18,35 @@ USE `contatos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `header_sobre`
+--
+
+DROP TABLE IF EXISTS `header_sobre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `header_sobre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) DEFAULT NULL,
+  `subtitulo` varchar(50) DEFAULT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
+  `cor_titulo` varchar(20) DEFAULT NULL,
+  `cor_subtitulo` varchar(20) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `header_sobre`
+--
+
+LOCK TABLES `header_sobre` WRITE;
+/*!40000 ALTER TABLE `header_sobre` DISABLE KEYS */;
+INSERT INTO `header_sobre` VALUES (7,'Curiosidades','vamo lau','3a3454aab83144ee1758d25788b863bb.png','#000000','#000000',0),(9,'Curiosidades','Pink Floyd é muito bom slk','0dd3b22c97fc4081a2a5e1e3236e0bbf.jpg','#9c505e','#970097',1),(13,'asdasd','asdasd','3e9b486be29c7ab1e3d5b7ff5c96b698.png','#000000','#000000',0);
+/*!40000 ALTER TABLE `header_sobre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `introducao_curiosidades`
 --
 
@@ -33,7 +62,7 @@ CREATE TABLE `introducao_curiosidades` (
   `status` tinyint(4) DEFAULT NULL,
   `cor_texto` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +71,7 @@ CREATE TABLE `introducao_curiosidades` (
 
 LOCK TABLES `introducao_curiosidades` WRITE;
 /*!40000 ALTER TABLE `introducao_curiosidades` DISABLE KEYS */;
-INSERT INTO `introducao_curiosidades` VALUES (50,'Novo conteúdo','Eu realmente espero que funcione :(                                        ','ed4d05a3877707a58d942460db3e73c8.png','#6a85c4',1,'#000000');
+INSERT INTO `introducao_curiosidades` VALUES (55,'Curiosidades','Ae                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ','79f1b41947938f75ba23dba958dd6cbb.png','#ff8000',0,'#000000'),(56,'Curiosidades','123                    ','d4e1a3fe0b06ea25a0002701d72ea589.png','#ff0000',1,'#000000');
 /*!40000 ALTER TABLE `introducao_curiosidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +96,7 @@ CREATE TABLE `section_curiosidades` (
   `cor_texto` varchar(50) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,8 +105,63 @@ CREATE TABLE `section_curiosidades` (
 
 LOCK TABLES `section_curiosidades` WRITE;
 /*!40000 ALTER TABLE `section_curiosidades` DISABLE KEYS */;
-INSERT INTO `section_curiosidades` VALUES (1,'adasdasd','asdasdasd','            asdasd                                ','asdasd','           sdasdasda  asdasd                               ','dasdasda','           sdasdasdasdasd                                 ','','#82eecd','#ffffff',1),(2,'asdasdasd','asdasdasd','                             asdasdas               ','dasdasd','           asdas                                 ','dasdasda','          asdasdasdasd                                  ','','#6da09a','#000000',1),(3,'asdasdasdasda','asdasdasd','                                   asdasdasdad         ','asdasdads','                                     adasdasd       ','asdasd','                         asdasdasd                   ','94c0b779f8677a68faafe0ff28305c88.png','#f8d389','#000000',1);
+INSERT INTO `section_curiosidades` VALUES (17,'Aee','Dia','do descobrimento\r\n                                            ','do petroleo','       vamo festejar                                     ','lalala','klakaka                                            ','bf7cd9ae24569527c65aba6cb3f9a028.png','#800040','#000000',1);
 /*!40000 ALTER TABLE `section_curiosidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sectiondois_sobre`
+--
+
+DROP TABLE IF EXISTS `sectiondois_sobre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sectiondois_sobre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) DEFAULT NULL,
+  `texto` varchar(50) DEFAULT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
+  `cor_texto` varchar(20) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sectiondois_sobre`
+--
+
+LOCK TABLES `sectiondois_sobre` WRITE;
+/*!40000 ALTER TABLE `sectiondois_sobre` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sectiondois_sobre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sectionum_sobre`
+--
+
+DROP TABLE IF EXISTS `sectionum_sobre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sectionum_sobre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) DEFAULT NULL,
+  `texto` varchar(300) DEFAULT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
+  `cor_font` varchar(50) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sectionum_sobre`
+--
+
+LOCK TABLES `sectionum_sobre` WRITE;
+/*!40000 ALTER TABLE `sectionum_sobre` DISABLE KEYS */;
+INSERT INTO `sectionum_sobre` VALUES (2,'Agora foi?','Ae to feliz pq foi kaka gratificante.','1895df6e9e8cbb5946df4758ce48f231.png','#ff0080',1),(4,'eita','Edit funcionando po ae\r\nFOOOOOOOI','1d07d29084293ac8c3768618939570a4.png','',0);
+/*!40000 ALTER TABLE `sectionum_sobre` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,7 +212,7 @@ CREATE TABLE `tblniveis` (
   `adm_usuarios` tinyint(1) DEFAULT NULL,
   `status_nivel` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +221,7 @@ CREATE TABLE `tblniveis` (
 
 LOCK TABLES `tblniveis` WRITE;
 /*!40000 ALTER TABLE `tblniveis` DISABLE KEYS */;
-INSERT INTO `tblniveis` VALUES (12,'Administrador de Conteúdos',0,1,0,1),(13,'Administrador Geral',1,1,1,1);
+INSERT INTO `tblniveis` VALUES (12,'Administrador de Conteúdos',0,1,0,1),(13,'Administrador Geral',1,1,1,1),(14,'Criação de gado',1,1,1,1);
 /*!40000 ALTER TABLE `tblniveis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +243,7 @@ CREATE TABLE `tblusuarios` (
   PRIMARY KEY (`id`),
   KEY `codnivel` (`codnivel`),
   CONSTRAINT `tblusuarios_ibfk_1` FOREIGN KEY (`codnivel`) REFERENCES `tblniveis` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +252,7 @@ CREATE TABLE `tblusuarios` (
 
 LOCK TABLES `tblusuarios` WRITE;
 /*!40000 ALTER TABLE `tblusuarios` DISABLE KEYS */;
-INSERT INTO `tblusuarios` VALUES (13,'Usuario','Usuario','a@gmail.com','202cb962ac59075b964b07152d234b70',13,1),(14,'Lazaro','Lazaro','lazaro@gmail.com','202cb962ac59075b964b07152d234b70',12,1);
+INSERT INTO `tblusuarios` VALUES (13,'Usuario','Usuario','a@gmail.com','202cb962ac59075b964b07152d234b70',13,1),(14,'Lazaro','Lazaro','lazaro@gmail.com','202cb962ac59075b964b07152d234b70',12,1),(15,'Testar','teste','testando@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',14,1),(16,'Copo','De vidro','ae@hotmail.com','202cb962ac59075b964b07152d234b70',13,1),(17,'Copo','De copo','copacabana@gmail.com','202cb962ac59075b964b07152d234b70',13,1);
 /*!40000 ALTER TABLE `tblusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -181,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-17 22:10:33
+-- Dump completed on 2019-11-18 11:37:31

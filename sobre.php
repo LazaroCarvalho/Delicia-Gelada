@@ -105,7 +105,7 @@
         <section id="sobre_nos" style="background-image: url('cms/bd/arquivos/<?=$rsConteudo['imagem']?>');">
             <div id="vidro">
                 <div class="conteudo center">
-                    <div class="titulo_sobre center" style="color: <?=$rsConteudo['cor_subtitulo']?>" id="nome_site">
+                    <div class="titulo_sobre center" style="color: <?=$rsConteudo['cor_titulo']?>" id="nome_site">
                         <h1><?=$rsConteudo['titulo']?></h1>
                     </div>
                     <div class="titulo_sobre center" style="color: <?=$rsConteudo['cor_subtitulo']?>" id="titulo_sobre_2">
@@ -122,18 +122,24 @@
         <?php } ?>
         
         <!-- Qualidades da empresa -->
-        <section id="safras">
-            <div id="safras_pelicula">
-                <div class="conteudo center">
-                    <div class="sobre_titulos center">
-                        <h1>As frutas vêm das melhores safras</h1>
-                    </div>
-                    <div class="sobre_textos center">
-                        <p>Além de todo cuidado com a produção dos sucos, temos também todo o cuidado em selecionar as melhores frutas para produzi-los. Para isso, contamos com as melhores safras, produzindo sucos de qualidade com frutas de qualidade!</p>
+        <?php
+            $sql = "SELECT * FROM sectionum_sobre WHERE status = 1";
+            $select = mysqli_query($conexao, $sql);
+
+            if($rsConteudo = mysqli_fetch_array($select))
+        ?>
+            <section id="safras" style="background-image: url('cms/bd/arquivos/<?=$rsConteudo['imagem']?>')">
+                <div id="safras_pelicula">
+                    <div class="conteudo center" style="color: <?=$rsConteudo['cor_font']?>">
+                        <div class="sobre_titulos center">
+                            <h1><?=$rsConteudo['titulo']?></h1>
+                        </div>
+                        <div class="sobre_textos center">
+                            <p><?=$rsConteudo['texto']?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         
         <!-- Alcance da Empresa -->
         <section id="alcance">

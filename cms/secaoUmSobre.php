@@ -17,45 +17,32 @@
     $elementoHtmlPermissoes = permissoesUsuario($conexao, $_SESSION['id_usuario']);
 
     $titulo = (string) "";
-    $subtitulo = (string) "";
+    $texto = (string) "";
     $imagem = (string) "<img src='icons/photo-camera.png' class='preview-icon-headersobre'>";
-    $corTitulo = (string) "";
-    $corSubtitulo = (string) "";
+    $corTexto = (string) "";
     $valorBotao = (string) "Salvar";
 
-    // Verificando se esta página foi requisitada.
+    // verifica se esta página foi requisitada.
     if(isset($_GET['codigo']))
     {
 
-        // Verificando se o modo é edição
-        if(strtoupper($_GET['modo']) == "EDITAR")
+        $sql = "SELECT * FROM sectionum_sobre WHERE id = ".$_GET['codigo'];
+        $select = mysqli_query($conexao, $sql);
+
+        if($rsConteudo = mysqli_fetch_array($select))
         {
 
-            // Executando SCRIPT para buscar o registro selecionado.
-            $sql = "SELECT * FROM header_sobre WHERE id = ".$_GET['codigo'];
-            $select = mysqli_query($conexao, $sql);
+            $_SESSION['codigoRegistro'] = $rsConteudo['id'];
 
-            if($rsConteudo = mysqli_fetch_array($select))
-            {
-
-                // Criando variáveis de sessão.
-                $_SESSION['imagemAntiga'] = $rsConteudo['imagem'];
-                $_SESSION['codigoRegistro'] = $rsConteudo['id'];
-
-                // Pegando as informações do registro.
-                $titulo = $rsConteudo['titulo'];
-                $subtitulo = $rsConteudo['subtitulo'];
-                $corTitulo = $rsConteudo['cor_titulo'];
-                $corSubtitulo = $rsConteudo['cor_subtitulo'];
-                $imagem = "<img src='bd/arquivos/".$rsConteudo['imagem']."' class='preview-icon-headersobre'>";
-                $valorBotao = "Editar";
-
-            }
+            $titulo = $rsConteudo['titulo'];
+            $texto = $rsConteudo['texto'];
+            $imagem = "<img src='bd/arquivos/".$rsConteudo['imagem']."' class='preview-icon-headersobre'>";
+            $corTexto = $rsConteudo['cor_font'];
+            $valorBotao = "editar";
 
         }
 
     }
-
     
 ?>
 
@@ -152,19 +139,18 @@
                                     </a>
                                 </ul>
                             </div>
-                            <div class="container-cadastro-header center">
-                                <form name="frmFormulario" method="post" action="bd/inserirHeaderSobre.php">
+                            <div class="container-cadastro-header center" id="container_registro_section1">
+                                <form name="frmFormulario" method="post" action="bd/secaoUmInserir.php">
                                     <div class="cont-titulo-adm center">
                                         <h1 class="center txt-center">TITULO</h1>
                                         <input name="titulo" value="<?=$titulo?>" required class="titulo-admheader" type="text" maxlength="49" placeholder="Insira seu título">
-                                        <input type="color" value="<?=$corTitulo?>" name="colorTitulo"><label>Cor da fonte do título</label>
+                                        <input type="color" value="<?=$corTexto?>" name="cor_texto"><label>Cor da fonte</label>
                                     </div>
                                     <div class="cont-subtitulo-adm center">
-                                        <h1 class="center txt-center">Subtitulo</h1>
-                                        <input name="subtitulo" value="<?=$subtitulo?>" required class="subtitulo-admheader center" type="text" maxlength="49" placeholder="Insira seu subtitulo">
-                                        <input type="color" value="<?=$corSubtitulo?>" name="colorSubtitulo"><label>Cor da fonte do subtítulo</label>
+                                        <h1 class="center txt-center">Texto</h1>
+                                        <textarea name="texto" required class="text-admsection-um center" type="text" maxlength="299" placeholder="Insira seu subtitulo"><?=$texto?></textarea>
                                     </div>
-                                    <div class="cont-preview-img center">
+                                    <div class="cont-preview-img center" id="preview-img-section1">
                                         <div id="preview-image-headersobre">
                                             <label for="input-image-headersobre" id="label-preview-image">
                                                 <?=$imagem?>
@@ -192,7 +178,7 @@
                                             Titulo
                                         </div>
                                         <div class="nome_cedula">
-                                            Subtitulo
+                                            Texto
                                         </div>
                                         <div class="nome_cedula">
                                             Status
@@ -204,7 +190,7 @@
                                     <?php 
                                     
                                         // Script para trazer os usuários cadastrados no banco e seus níveis .
-                                        $sql = "SELECT * FROM header_sobre";
+                                        $sql = "SELECT * FROM sectionum_sobre";
                                         $select = mysqli_query($conexao, $sql);
 
                                         $contador = 0;
@@ -228,27 +214,27 @@
                                             <?=$rsConteudos['titulo']?>
                                         </div>
                                         <div class="campo_info">
-                                            <?=$rsConteudos['subtitulo']?>
+                                            <?=$rsConteudos['texto']?>
                                         </div>
                                         <div class="campo_info">
                                         <!-- Verificando o status e exibindo o ícone adequado (Ativado/Desativado) -->
                                         <?php if($rsConteudos['status'] == 1){ ?>
-                                            <a href="bd/statusHeader.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
+                                            <a href="bd/statusSectionUm.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
                                                 <img src="icons/icons8-toggle-on-32.png" alt="Ativar">
                                             </a>
                                         
                                         <?php } else{ ?>
-                                            <a href="bd/statusHeader.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
+                                            <a href="bd/statusSectionUm.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
                                                 <img src="icons/icons8-toggle-off-32.png" alt="Desativar">
                                             </a>
                                         <?php } ?>
                                         </div>
                                         <div class="campo_info">
                                             <div class="opcoes_imagens">
-                                                <a href="admHeaderSobre.php?modo=editar&codigo=<?=$rsConteudos['id'];?>">
+                                                <a href="secaoUmSobre.php?modo=editar&codigo=<?=$rsConteudos['id'];?>">
                                                     <img src="icons/editar.png" class="imagens_opcoes">
                                                 </a>
-                                                <a onclick="return confirm('Você realmente deseja excluir este registro?');" href="bd/excluirConteudo.php?codigo=<?=$rsConteudos['id']?>&tabela=header_sobre&pagina=secaoUmSobre.php">
+                                                <a onclick="return confirm('Você realmente deseja excluir este registro?');" href="bd/excluirConteudo.php?codigo=<?=$rsConteudos['id']?>&tabela=sectionum_sobre&pagina=secaoUmSobre.php">
                                                     <img src="icons/claro.png" class="imagens_opcoes">
                                                 </a>
                                             </div>

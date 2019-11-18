@@ -89,13 +89,13 @@
                 if(strtoupper($_POST['modo']) == "EDITAR")  // Se o modo for editar e existir imagemPreview
                     unlink($imagemAntiga);
 
-                unlink($_SESSION['imagemPreview']);
+                unset($_SESSION['imagemPreview']);
             }
 
             if(isset($_SESSION['codigoConteudo']))
-                unlink($_SESSION['codigoConteudo']);
+                unset($_SESSION['codigoConteudo']);
 
-            unlink($_SESSION['imagemRegistro']);
+            unset($_SESSION['imagemRegistro']);
             header('location: ../admCuriosidades.php');
 
         }

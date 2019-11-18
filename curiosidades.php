@@ -139,7 +139,7 @@
         ?>
             <section id="beneficios" style="background-color: <?=$rsConteudo['cor_fundo']?>">
                 <div class="conteudo center" id="conteudos-curiosidades">
-                    <div class="titulos center">
+                    <div class="titulos center" style="color: <?=$rsConteudo['cor_texto']?>">
                         <h1><?=$rsConteudo['titulo_um']?></h1>
                     </div>
                     <div class="container_imagemtexto center">
@@ -147,22 +147,22 @@
                             <img src="cms/bd/arquivos/<?=$rsConteudo['imagem']?>" class="imagens">
                         </div>
                         <div class="textos">
-                            <div class="subtitulos">
+                            <div class="subtitulos" style="color: <?=$rsConteudo['cor_texto']?>">
                                 <h2><?=$rsConteudo['titulo_dois']?></h2>
                             </div>
-                            <p>
+                            <p style="color: <?=$rsConteudo['cor_texto']?>">
                                 <?=$rsConteudo['texto_um']?></h2>
                             </p>
-                            <div class="subtitulos">
+                            <div class="subtitulos" style="color: <?=$rsConteudo['cor_texto']?>">
                                 <h2><?=$rsConteudo['titulo_tres']?></h2>
                             </div>
-                            <p>
+                            <p style="color: <?=$rsConteudo['cor_texto']?>">
                                 <?=$rsConteudo['texto_dois']?>
                             </p>
-                            <div class="subtitulos">
+                            <div class="subtitulos" style="color: <?=$rsConteudo['cor_texto']?>">
                                 <h2><?=$rsConteudo['titulo_quatro']?></h2>
                             </div>
-                            <p>
+                            <p style="color: <?=$rsConteudo['cor_texto']?>">
                                 <?=$rsConteudo['texto_tres']?>
                             </p>
                         </div>

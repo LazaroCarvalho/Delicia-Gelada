@@ -86,10 +86,10 @@
                                 </div>
                                 <div class="admpagina_item">
                                     <div class="admitem_imagem">
-                                    
+                                        <img src="icons/about-us.png" class="icons_admconteudo">
                                     </div>
                                     <div class="admitem_titulo">
-                                        <a href="#">
+                                        <a href="admHeaderSobre.php">
                                             <h2 class="adm_estilo">Administrar Sobre Nós</h2>
                                             <p> Clique para editar a página</p>
                                         </a>

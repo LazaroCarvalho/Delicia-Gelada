@@ -591,7 +591,6 @@ a {
 #container_cadastro_usuario {
     width: 100%;
     height: 825px;
-    margin-top: -100px;
 }
 
 #container_cadastro_niveis {
@@ -801,20 +800,28 @@ a {
     font-family: sans-serif;
 }
 
-#container_usuarios_cadastrados, #container_niveis_cadastrados {
+#container_usuarios_cadastrados, #container_niveis_cadastrados,  #container_usuarios_cadastrados_header{
     width: 100%;
     height: 700px;
+}
+
+#container_usuarios_cadastrados_header {
+    margin-top: 100px;
 }
 
 #container_usuarios_cadastrados {
     margin-top: 300px;
 }
 
-#tabela_usuarios_cadastrados {
+#tabela_usuarios_cadastrados, #tabela_usuarios_cadastrados-header {
     width: 1020px;
     height: 580px;
     border: 1px solid black;
     border-radius: 30px;
+}
+
+#tabela_usuarios_cadastrados-header {
+    width: 850px;
 }
 
 .titulo_cadastrados {
@@ -910,6 +917,7 @@ a {
     width: 220px;
     min-height: 60px;
     height: auto;
+    float: left;
     margin-left: 30px;
 }
 
@@ -1054,10 +1062,15 @@ a {
     transform: scale(1.02);
 }
 
-#preview-image, #preview-image-curiosidades {
+#preview-image, #preview-image-curiosidades, #preview-image-headersobre {
     width: 250px;
     height: 250px;
     border: 1px solid black;
+}
+
+#preview-image-headersobre {
+    width: 100%;
+    height: 100%;
 }
 
 #preview-image-curiosidades {
@@ -1108,11 +1121,16 @@ a {
     background-color: #a1a09d;
 }
 
-.preview-icon, .preview-icon-curiosidades {
+.preview-icon, .preview-icon-curiosidades, .preview-icon-headersobre {
     width: 64px;
     height: 64px;
     margin-left: 93px;
     margin-top: 93px;
+}
+
+.preview-icon-headersobre {
+    margin-top: 118px;
+    margin-left: 168px;
 }
 
 .preview-icon-curiosidades {
@@ -1178,7 +1196,7 @@ a {
     margin-left: 10px;
 }
 
-.card-conteudo {
+.card-conteudo, .card-conteudo-curiosidades  {
     width: 400px;
     height: 300px;
     padding-top: 10px;
@@ -1186,7 +1204,12 @@ a {
     border-radius: 30px 30px 0 0;
 }
 
-.cont-card {
+.card-conteudo-curiosidades {
+    width: 450px;
+    height: 320px;
+}
+
+.cont-card, .cont-card-curiosidades {
     width: 400px;
     height: 370px;
     margin-top: 50px;
@@ -1196,17 +1219,31 @@ a {
     border: 1px solid black;
 }
 
-.card-opcoes {
+.cont-card-curiosidades {
+    width: 450px;
+    height: 390px;
+}
+
+.card-opcoes, .card-opcoes-curiosidades {
     width: 400px;
     height: 72px;
     background-color: #121212;
     border-radius: 0 0 30px 30px;
 }
 
-.card-img {
+.card-opcoes-curiosidades {
+    width: 450px;
+}
+
+.card-img, .card-img-curiosidades {
     width: 160px;
     height: 160px;
     border-radius: 30px;
+}
+
+.card-img-curiosidades {
+    width: 190px;
+    height: 180px;
 }
 
 .card-title {
@@ -1215,14 +1252,20 @@ a {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.cont-card-img {
+.cont-card-img, .cont-card-img-curiosidades {
     width: 160px;
     height: 230px;
     margin-left: 30px;
     box-sizing: border-box;
 }
 
-.card-text {
+.cont-card-img-curiosidades {
+    width: 210px;
+    height: 250px; 
+}
+
+
+.card-text, .card-text-curiosidades {
     width: 220px;
     height: 210px;
     padding-left: 12px;
@@ -1233,12 +1276,21 @@ a {
     font-family: 'Muli', sans-serif;
 }
 
-.cont-card-conteudo {
+.card-text-curiosidades {
+    width: 270px;
+    height: 230px;
+}
+
+.cont-card-conteudo, .cont-card-conteudo-curiosidades {
     width: 100%;
     height: 220px;
     margin-top: 15px;
     display: flex;
     flex-direction: row;
+}
+
+.cont-card-conteudo-curiosidades {
+    height: 240px;
 }
 
 .card-opcoes-icon {
@@ -1262,10 +1314,14 @@ a {
     margin-left: -2px;
 }
 
-.cont-opcoes-icon {
+.cont-opcoes-icon, .cont-opcoes-icon-curiosidades {
     width: 261px;
     height: 42px;
     margin-left: 90px;
+}
+
+.cont-opcoes-icon-curiosidades {
+    margin-left: 120px;
 }
 
 .btn-buscar {
@@ -1599,11 +1655,11 @@ a {
     margin-left: 280px;
 }
 
-#label-preview-image:hover {
+#label-preview-image:hover, #label-preview-image-curiosidade {
     cursor: pointer;
 }
 
-.container-image-preview {
+.container-image-preview, .container-image-preview-curiosidades {
     width: 370px;
     height: 370px;
 }
@@ -1646,4 +1702,146 @@ a {
 
 #card_cadastro_curiosidades {
     height: 700px;
+}
+
+.titulo-text-curiosidades {
+    width: 200px;
+    height: 30px;
+}
+
+.texto-curiosidades-card {
+    width: 200px;
+    height: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.subtitulos-curiosidades {
+    width: 450px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.over-hidden {
+    overflow: hidden;
+}
+
+.input-titulo-curiosidades {
+    width: 300px;
+    height: 40px;
+    font-size: 22px;
+    margin-top: 5px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border: 1px solid #d4d4d4;
+}
+
+.input-text-curiosidades {
+    width: 300px;
+    height: 60px;
+    font-size: 22px;
+    margin-top: 5px;
+    padding-left: 8px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border: 1px solid #d4d4d4;
+    resize: none;
+}
+
+.menu-sobre-nos {
+    width: 300px;
+    height: 450px;
+}
+
+.menu-sobre-adm {
+    width: 100%;
+    height: 140px;
+    margin-bottom: 10px;
+}
+
+#adm-sobre {
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.container-cadastro-header {
+    width: 800px;
+    height: 750px;
+    border: 1px solid black;
+    border-radius: 30px;
+    margin-bottom: 9px;
+    box-shadow: 6px 6px #919191;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.titulo-admheader {
+    text-align: center;
+    width: 500px;
+    height: 45px;
+    margin-bottom: 8px;
+    font-size: 22px;
+    border-radius: 20px;
+    font-family: sans-serif;
+}
+
+.cont-titulo-adm {
+    width: 500px;
+    height: 86px;
+}
+
+.cont-subtitulo-adm {
+    width: 350px;
+    height: 42px;
+    margin-top: 70px;
+}
+
+.subtitulo-admheader {
+    width: 350px;
+    height: 41px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 18px;
+    font-family: sans-serif;
+}
+
+.cont-subtitulo-adm {
+    width: 350px;
+    height: 46px;
+    margin-bottom: 80px;
+}
+
+.cont-preview-img {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.submit-headersobre {
+    width: 140px;
+    height: 45px;
+}
+
+.container-submit-headersobre {
+    width: 145px;
+    height: 50px;
+    margin-top: 30px;
+}
+
+.image-crud {
+    width: 64px;
+    height: 64px;
+}
+
+.campo-imageCrud {
+    margin: 0px;
+    padding-top: 5px;
+}
+
+.crud-headerSobre {
+    width: 850px;
 }

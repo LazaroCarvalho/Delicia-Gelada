@@ -32,7 +32,6 @@
 
     }
 
-
     // Retorna os elementos HTML equivalentes ao nível de permissões do usuário.
     $elementoHtmlPermissoes = permissoesUsuario($conexao, $_SESSION['id_usuario']);
 
@@ -89,20 +88,49 @@
 
                 });
 
+                $("#input-image-curiosidades").live("change", function() {
+
+                    $("#form-image-curiosidades").ajaxForm({
+
+                        target: '.container-image-preview-curiosidades'
+
+                    }).submit();
+
+                });
+
             });
 
             // Recebe ID de um registro no banco.
-            function resgatarDados(idRegistro) {
+            function resgatarDados(idRegistro, modal) {
 
-                $.ajax({
-                    type: "POST",
-                    url: "modalIntroducao.php",
-                    data: {codigo:idRegistro, tabela:'introducao_curiosidades'},
-                    success: function(dados) {
-                        $('.cont-modal-conteudo').html(dados);
-                    }
+                if(modal == "curiosidades") {
 
-                });
+                    $.ajax({
+
+                        type: "POST",
+                        url: "modalCuriosidades.php",
+                        data: {codigo:idRegistro},
+                        success: function(dados) {
+                            $('.cont-modal-conteudo').html(dados);
+                        }
+
+                    }); 
+
+                } else {
+
+                    $.ajax({
+
+                        type: "POST",
+                        url: "modalIntroducao.php",
+                        data: {codigo:idRegistro, tabela:'introducao_curiosidades'},
+                        success: function(dados) {
+                            $('.cont-modal-conteudo').html(dados);
+                        }
+
+                    }); 
+
+                }
+                
 
             }
 
@@ -313,22 +341,33 @@
                                             </div>
                                         </div>
                                     <?php } else { ?>
-                                        <div class="cont-card" style="background-color: <?=$rsConteudo['cor_fundo']?>">
-                                            <div class="card-conteudo">
-                                                <h1 class="card-title txt-center" style="color: <?=$rsConteudo['cor_texto']?>">A</h1>
-                                                <div class="cont-card-conteudo">
-                                                    <div class="cont-card-img">
-                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img">
+                                        <div class="cont-card-curiosidades" style="background-color: <?=$rsConteudo['cor_fundo']?>">
+                                            <div class="card-conteudo-curiosidades">
+                                                <h1 class="card-title txt-center over-hidden" style="color: <?=$rsConteudo['cor_texto']?>"><?=$rsConteudo['titulo_um']?></h1>
+                                                <div class="cont-card-conteudo-curiosidades">
+                                                    <div class="cont-card-img-curiosidades">
+                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img-curiosidades">
                                                     </div>
-                                                    <div class="card-text" style="color: <?=$rsConteudo['cor_texto']?>">
-                                                        
+                                                    <div class="card-text-curiosidades" style="color: <?=$rsConteudo['cor_texto']?>">
+                                                        <div class="titulo-text-curiosidades over-hidden">
+                                                            <?=$rsConteudo['titulo_dois']?>
+                                                        </div>
+                                                        <div class="texto-curiosidades-card over-hidden">
+                                                            <?=$rsConteudo['texto_um']?>
+                                                        </div>
+                                                        <div class="titulo-text-curiosidades over-hidden">
+                                                            <?=$rsConteudo['titulo_tres']?>    
+                                                        </div>
+                                                        <div class="texto-curiosidades-card over-hidden">
+                                                            <?=$rsConteudo['texto_dois']?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-opcoes">
-                                                <div class="cont-opcoes-icon">
+                                            <div class="card-opcoes-curiosidades">
+                                                <div class="cont-opcoes-icon-curiosidades">
                                                     <div class="cont-icon">
-                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php?">
                                                             <img class="card-opcoes-icon" src="icons/error.png">
                                                         </a>
                                                     </div>
@@ -336,17 +375,17 @@
                                                         <?php
                                                             if($rsConteudo['status'] == 1) {
                                                         ?>
-                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                            <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
                                                             <a>
                                                         <?php } else {?>
-                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                            <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php?">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
                                                             <a>
                                                         <?php } ?>
                                                     </div>
                                                     <div class="cont-icon">
-                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>, 'curiosidades')">
                                                             <img class="card-opcoes-icon" src="icons/edit.png">
                                                         </a>
                                                     </div>

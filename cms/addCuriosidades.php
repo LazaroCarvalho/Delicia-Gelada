@@ -100,7 +100,7 @@
                         <!-- Conteúdo -->
                         <div class="cms_conteudo" id="introducaoConteudo">
                             <div class="card_cadastro_conteudo center" id="card_cadastro_curiosidades">
-                                <form name="formularioConteudo" method="post" action="bd/inserirCuriosidades.php" enctype="multipart/form-data">
+                                <form name="formularioConteudo" method="post" action="bd/salvarCuriosidades.php" enctype="multipart/form-data">
                                     <h1 class="titulo_card">Título</h1>
                                     <input name="titulo1" placeholder="Insira seu titulo..." type="text" class="input_titulos" maxlength="50" required>
                                     <div id="cont_input">
@@ -113,19 +113,19 @@
                                         </div>
                                         <div class="container-titulos-textos">
                                             <div class="subtitulo-curiosidades">
-                                                <input name="titulo2" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
+                                                <input required name="titulo2" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
                                             </div>
-                                            <textarea name="texto1" maxlength="299" class="texto-curiosidades">
+                                            <textarea required name="texto1" maxlength="299" class="texto-curiosidades">
                                             </textarea>
                                             <div class="subtitulo-curiosidades">
-                                                <input name="titulo3" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
+                                                <input required name="titulo3" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
                                             </div>
-                                            <textarea name="texto2" maxlength="299" class="texto-curiosidades">
+                                            <textarea required name="texto2" maxlength="299" class="texto-curiosidades">
                                             </textarea>
                                             <div class="subtitulo-curiosidades">
-                                                <input name="titulo4" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
+                                                <input required name="titulo4" type="text" maxlength="49" placeholder="Insira um título.." class="input-titulo-curiosidades"></h2>
                                             </div>
-                                            <textarea name="texto3" maxlength="299" class="texto-curiosidades">
+                                            <textarea required name="texto3" maxlength="299" class="texto-curiosidades">
                                             </textarea>
                                         </div>
                                     <div>

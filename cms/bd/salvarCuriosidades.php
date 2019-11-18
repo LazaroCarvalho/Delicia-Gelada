@@ -74,6 +74,7 @@
         if(strtoupper($_POST['modo']) == "EDITAR")
         {
 
+            // Verifica se outra imagem foi selecionada.
             if(isset($_SESSION['imagemPreview']))
             {
 
@@ -82,9 +83,9 @@
                         SET titulo_um = '".$titulo1."', titulo_dois = '".$titulo2."', 
                             texto_um = '".$texto1."', titulo_tres = '".$titulo3."',
                             texto_dois = '".$texto2."', titulo_quatro = '".$titulo4."',
-                            texto_tres = '".$texto3."', imagem = '".$$_SESSION['imagemPreview']."',
+                            texto_tres = '".$texto3."', imagem = '".$_SESSION['imagemPreview']."',
                             cor_fundo = '".$corFundo."', cor_texto = '".$corFont."', 
-                            status = '".$status."')";
+                            status = '".$status."' WHERE id = ".$_SESSION['codigoConteudo'];
 
             }
             else {
@@ -94,7 +95,7 @@
                             texto_um = '".$texto1."', titulo_tres = '".$titulo3."',
                             texto_dois = '".$texto2."', titulo_quatro = '".$titulo4."',
                             texto_tres = '".$texto3."', cor_fundo = '".$corFundo."', cor_texto = '".$corFont."', 
-                            status = '".$status."')";
+                            status = '".$status."' WHERE id = ".$_SESSION['codigoConteudo'];
 
             }
 
@@ -102,7 +103,23 @@
 
         // Verificando se o script foi executado com sucesso e retornando para a página de requisição.
         if(mysqli_query($conexao, $sql))
+        {
+
+            if(isset($_SESSION['imagemPreview']))
+            {
+                // Apaga a imagem antiga, caso o usuário tenha upado uma nova foto.
+                if(strtoupper($_POST['modo']) == "EDITAR")
+                    unlink("arquivos/".$_SESSION['imagemRegistro']);
+
+                unset($_SESSION['imagemPreview']);
+
+            }
+
+            unset($_SESSION['codigoConteudo']);
+            unset($_SESSION['imagemRegistro']);
             header("location: ../admCuriosidades.php");
+
+        }
         else
             echo(ERRO_EXECUCAO_SCRIPT);
 

@@ -1,6 +1,9 @@
 <?php 
 
+    require_once('bd/conexao.php');
     require_once('modulos/footer.php');
+
+    $conexao = conexaoMysql();
 
     if(!isset($_SESSION))
         session_start();
@@ -91,15 +94,22 @@
             </div>
         </header>
         
-        <!-- Imagem principal da página e título -->
-        <section id="sobre_nos">
+        <?php 
+        
+            $sql = "SELECT * FROM header_sobre WHERE status = 1";
+            $select = mysqli_query($conexao, $sql);
+
+            while($rsConteudo = mysqli_fetch_array($select))
+            {
+        ?>
+        <section id="sobre_nos" style="background-image: url('cms/bd/arquivos/<?=$rsConteudo['imagem']?>');">
             <div id="vidro">
                 <div class="conteudo center">
-                    <div class="titulo_sobre center" id="nome_site">
-                        <h1>Delicia Gelada</h1>
+                    <div class="titulo_sobre center" style="color: <?=$rsConteudo['cor_subtitulo']?>" id="nome_site">
+                        <h1><?=$rsConteudo['titulo']?></h1>
                     </div>
-                    <div class="titulo_sobre center" id="titulo_sobre_2">
-                        <h2>Saiba mais sobre nós</h2>
+                    <div class="titulo_sobre center" style="color: <?=$rsConteudo['cor_subtitulo']?>" id="titulo_sobre_2">
+                        <h2><?=$rsConteudo['subtitulo']?></h2>
                     </div>
                     <div id="buttom_seta" class="center">
                         <a href="#safras" class="ancora">
@@ -109,6 +119,7 @@
                 </div>
             </div>
         </section>
+        <?php } ?>
         
         <!-- Qualidades da empresa -->
         <section id="safras">

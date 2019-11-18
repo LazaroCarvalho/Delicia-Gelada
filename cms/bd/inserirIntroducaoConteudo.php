@@ -59,12 +59,15 @@
             if(strtoupper($_POST['modo']) == "EDITAR")
             {
                 // Se nenhuma imagem foi selecionada, o update não deve inserir imagem alguma
-                if(isset($_SESSION['imagemPreview']))
+                if(isset($_SESSION['imagemPreview'])) {
+                    $imagemAntiga = "arquivos/".$_SESSION['imagemRegistro'];
+
                     // Neste IF, o update insere a imagem selecionada.
                     $sql = "UPDATE introducao_curiosidades SET titulo = '".$titulo."', 
                             texto = '".$texto."', imagem = '".$_SESSION['imagemPreview']."',
                             cor_fundo = '".$corFundo."', status = '".$status."', 
                             cor_texto = '".$corFont."' WHERE id = ".$_SESSION['codigoConteudo'];
+                }
                 else
                     // Neste IF, o update não insere imagem alguma, pois nenhuma foi selecionada.
                     $sql = "UPDATE introducao_curiosidades SET titulo = '".$titulo."', 
@@ -82,12 +85,17 @@
         if(mysqli_multi_query($conexao, $sql)) {
 
             // Verifica se as seguintes variáveis de sessão existem. Se existirem, são excluidas.
-            if(isset($_SESSION['imagemPreview']))
+            if(isset($_SESSION['imagemPreview'])){  
+                if(strtoupper($_POST['modo']) == "EDITAR")  // Se o modo for editar e existir imagemPreview
+                    unlink($imagemAntiga);
+
                 unlink($_SESSION['imagemPreview']);
+            }
 
             if(isset($_SESSION['codigoConteudo']))
                 unlink($_SESSION['codigoConteudo']);
 
+            unlink($_SESSION['imagemRegistro']);
             header('location: ../admCuriosidades.php');
 
         }

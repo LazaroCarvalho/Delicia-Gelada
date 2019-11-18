@@ -166,31 +166,33 @@
                         <h1 class="opcao-title center">
                             Curiosidades
                         </h1>
-                        <div class="container-opcao">
-                            <div class="opcao">
-                                <div class="linha-titulo-opcao center">
-                                </div> 
-                                <div class="opcao-imagem float-left">
-                                    <div class="image-opcao center">
+                        <a href="addCuriosidades.php">
+                            <div class="container-opcao">
+                                <div class="opcao">
+                                    <div class="linha-titulo-opcao center">
+                                    </div> 
+                                    <div class="opcao-imagem float-left">
+                                        <div class="image-opcao center">
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="opcao-textos float-left">
-                                    <div class="linha-grande">
+                                    <div class="opcao-textos float-left">
+                                        <div class="linha-grande">
 
-                                    </div>
-                                    <div class="linha-curta">
+                                        </div>
+                                        <div class="linha-curta">
 
-                                    </div>
-                                    <div class="linha-grande">
+                                        </div>
+                                        <div class="linha-grande">
 
-                                    </div>
-                                    <div class="linha-curta">
-                                        
+                                        </div>
+                                        <div class="linha-curta">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>  
             </div>
@@ -252,7 +254,7 @@
                                             <option value="introducao_curiosidades" <?=$introducoesSelected?>>
                                                 Introduções
                                             </option>
-                                            <option value="curiosidades" <?=$curiosidadesSelected?>>
+                                            <option value="section_curiosidades" <?=$curiosidadesSelected?>>
                                                 Curiosidades
                                             </option>
                                         </select>
@@ -265,50 +267,93 @@
                                         $sql = "SELECT * FROM ".$nomeTabela;
                                         $select = mysqli_query($conexao, $sql);
 
-                                        while($rsConteudo = mysqli_fetch_array($select))
+                                    while($rsConteudo = mysqli_fetch_array($select))
+                                    {
+                                        if($nomeTabela == "introducao_curiosidades")
                                         {
                                     ?>
-                                    <div class="cont-card" style="background-color: <?=$rsConteudo['cor_fundo']?>">
-                                        <div class="card-conteudo">
-                                            <h1 class="card-title txt-center" style="color: <?=$rsConteudo['cor_texto']?>"><?=$rsConteudo['titulo']?></h1>
-                                            <div class="cont-card-conteudo">
-                                                <div class="cont-card-img">
-                                                    <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img">
+                                        <div class="cont-card" style="background-color: <?=$rsConteudo['cor_fundo']?>">
+                                            <div class="card-conteudo">
+                                                <h1 class="card-title txt-center" style="color: <?=$rsConteudo['cor_texto']?>"><?=$rsConteudo['titulo']?></h1>
+                                                <div class="cont-card-conteudo">
+                                                    <div class="cont-card-img">
+                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img">
+                                                    </div>
+                                                    <div class="card-text" style="color: <?=$rsConteudo['cor_texto']?>">
+                                                        <?=$rsConteudo['texto']?>
+                                                    </div>
                                                 </div>
-                                                <div class="card-text" style="color: <?=$rsConteudo['cor_texto']?>">
-                                                    <?=$rsConteudo['texto']?>
+                                            </div>
+                                            <div class="card-opcoes">
+                                                <div class="cont-opcoes-icon">
+                                                    <div class="cont-icon">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                            <img class="card-opcoes-icon" src="icons/error.png">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <?php
+                                                            if($rsConteudo['status'] == 1) {
+                                                        ?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
+                                                            <a>
+                                                        <?php } else {?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
+                                                            <a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
+                                                            <img class="card-opcoes-icon" src="icons/edit.png">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-opcoes">
-                                            <div class="cont-opcoes-icon">
-                                                <div class="cont-icon">
-                                                    <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
-                                                        <img class="card-opcoes-icon" src="icons/error.png">
-                                                    </a>
+                                    <?php } else { ?>
+                                        <div class="cont-card" style="background-color: <?=$rsConteudo['cor_fundo']?>">
+                                            <div class="card-conteudo">
+                                                <h1 class="card-title txt-center" style="color: <?=$rsConteudo['cor_texto']?>">A</h1>
+                                                <div class="cont-card-conteudo">
+                                                    <div class="cont-card-img">
+                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img">
+                                                    </div>
+                                                    <div class="card-text" style="color: <?=$rsConteudo['cor_texto']?>">
+                                                        
+                                                    </div>
                                                 </div>
-                                                <div class="cont-icon">
-                                                    <?php
-                                                        if($rsConteudo['status'] == 1) {
-                                                    ?>
-                                                        <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
-                                                            <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
-                                                        <a>
-                                                    <?php } else {?>
-                                                        <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
-                                                            <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
-                                                        <a>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="cont-icon">
-                                                    <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
-                                                        <img class="card-opcoes-icon" src="icons/edit.png">
-                                                    </a>
+                                            </div>
+                                            <div class="card-opcoes">
+                                                <div class="cont-opcoes-icon">
+                                                    <div class="cont-icon">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                            <img class="card-opcoes-icon" src="icons/error.png">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <?php
+                                                            if($rsConteudo['status'] == 1) {
+                                                        ?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
+                                                            <a>
+                                                        <?php } else {?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
+                                                            <a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
+                                                            <img class="card-opcoes-icon" src="icons/edit.png">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <?php } ?>
+                                    <?php } } ?>
                                 </div>
                             </div>
                         </div>

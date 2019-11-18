@@ -1054,10 +1054,14 @@ a {
     transform: scale(1.02);
 }
 
-#preview-image {
+#preview-image, #preview-image-curiosidades {
     width: 250px;
     height: 250px;
     border: 1px solid black;
+}
+
+#preview-image-curiosidades {
+    height: 355px;
 }
 
 #preview-image:hover {
@@ -1104,11 +1108,15 @@ a {
     background-color: #a1a09d;
 }
 
-.preview-icon {
+.preview-icon, .preview-icon-curiosidades {
     width: 64px;
     height: 64px;
     margin-left: 93px;
     margin-top: 93px;
+}
+
+.preview-icon-curiosidades {
+    margin-top: 147px;
 }
 
 .preview-icon:hover {
@@ -1598,4 +1606,44 @@ a {
 .container-image-preview {
     width: 370px;
     height: 370px;
+}
+
+.container-titulos-textos {
+    width: 270px;
+    height: 355px;
+    margin-top: 20px;
+    float: left;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.subtitulo-curiosidades {
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.sub-curiosidades {
+    margin: 0;
+    padding: 0;
+}
+
+.texto-curiosidades {
+    width: 300px;
+    height: 45px;
+    resize: none;
+}
+
+#cont_imagem_curiosidades {
+    height: 355px;
+    float: left;
+}
+
+.input-titulo-curiosidades {
+    width: 200px;
+    height: 30px;
+}
+
+#card_cadastro_curiosidades {
+    height: 700px;
 }

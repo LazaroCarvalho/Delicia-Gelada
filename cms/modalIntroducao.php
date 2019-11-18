@@ -20,6 +20,7 @@
         {
             
             $_SESSION['codigoConteudo'] = $rsConteudo['id'];
+            $_SESSION['imagemRegistro'] = $rsConteudo['imagem'];
 
             // Recebendo os dados do registro.
             $titulo = $rsConteudo['titulo'];

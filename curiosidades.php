@@ -129,108 +129,47 @@
         <?php } ?>
         
         <!-- Benefícios de cada Suco -->
-        <!-- Laranja -->
-        <section id="beneficios_laranja">
-            <div class="conteudo center">
-                <div class="titulos center">
-                    <h1>Suco de laranja - Benefícios</h1>
-                </div>
-                <div class="container_imagemtexto center">
-                    <div class="imagens" id="laranja_imagem">
-                        
+        <?php
+
+            $sql = "SELECT * FROM section_curiosidades WHERE status = 1";
+            $select = mysqli_query($conexao, $sql);
+
+            while($rsConteudo = mysqli_fetch_array($select))
+            {
+        ?>
+            <section id="beneficios" style="background-color: <?=$rsConteudo['cor_fundo']?>">
+                <div class="conteudo center" id="conteudos-curiosidades">
+                    <div class="titulos center">
+                        <h1><?=$rsConteudo['titulo_um']?></h1>
                     </div>
-                    <div class="textos">
-                        <div class="subtitulos">
-                            <h2>Vitamina C</h2>
+                    <div class="container_imagemtexto center">
+                        <div class="imagens">
+                            <img src="cms/bd/arquivos/<?=$rsConteudo['imagem']?>" class="imagens">
                         </div>
-                        <p>
-                            A vitamina C pode reduzir sintomas de gripes e resfriados, além de diminuir o estresse e combater o envelhecimento da pele.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Ácido Fólico</h2>
+                        <div class="textos">
+                            <div class="subtitulos">
+                                <h2><?=$rsConteudo['titulo_dois']?></h2>
+                            </div>
+                            <p>
+                                <?=$rsConteudo['texto_um']?></h2>
+                            </p>
+                            <div class="subtitulos">
+                                <h2><?=$rsConteudo['titulo_tres']?></h2>
+                            </div>
+                            <p>
+                                <?=$rsConteudo['texto_dois']?>
+                            </p>
+                            <div class="subtitulos">
+                                <h2><?=$rsConteudo['titulo_quatro']?></h2>
+                            </div>
+                            <p>
+                                <?=$rsConteudo['texto_tres']?>
+                            </p>
                         </div>
-                        <p>
-                            O ácido fólico é muito usado no tratamento de anemias, além de prevenir doenças cardíacas e até mesmo o Alzheimer.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Cabelos, unhas e pele saudáveis</h2>
-                        </div>
-                        <p>
-                            Estimula o crescimento das unhas e dos cabelos, deixando também a pele mais brilhante e lisa.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Uva -->
-        <section id="beneficios_uva">
-            <div class="conteudo center">
-                <div class="titulos center">
-                    <h1>Suco de Uva - Benefícios</h1>
-                </div>
-                <div class="container_imagemtexto center">
-                    <div class="imagens" id="uva_imagem">
-                        
-                    </div>
-                    <div class="textos">
-                        <div class="subtitulos">
-                            <h2>Retarda o envelhecimento</h2>
-                        </div>
-                        <p>
-                            O resveratrol age no organismo reparando as células e combatendo os radicais livres. Com isso, a substância retarda o envelhecimento da pele, além de melhorar e aumentar a expectativa de vida.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Combate a Depressão</h2>
-                        </div>
-                        <p>
-                            O suco de uva possui vitamina B, que afasta naturalmente o mal humor e o estresse.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Cabelos, unhas e pele saudáveis</h2>
-                        </div>
-                        <p>
-                            Estimula o crescimento das unhas e dos cabelos, deixando também a pele mais brilhante e lisa.
-                        </p>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Maça -->
-        <section id="beneficios_maca">
-            <div class="conteudo center">
-                <div class="titulos center">
-                    <h1>Suco de Maça - Benefícios</h1>
-                </div>
-                <div class="container_imagemtexto center">
-                    <div class="imagens" id="maca_imagem">
-                        
-                    </div>
-                    <div class="textos">
-                        <div class="subtitulos">
-                            <h2>Protege o Coração</h2>
-                        </div>
-                        <p>
-                            A quercetina contribui com a diminuição do acúmulo de placas de colesterol nas artérias e, por consequência, ajuda a reduzir os riscos de desenvolvimento de ataque no coração.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Proteção aos pulmões</h2>
-                        </div>
-                        <p>
-                            Os polifenóis podem auxiliar a apaziguar um ataque de asma. Diminui a produção das histaminas, substâncias conhecidas por causaram irritação e serem produzidas pelo organismo em resposta à presença de alergênicos.
-                        </p>
-                        <div class="subtitulos">
-                            <h2>Fonte de potássio</h2>
-                        </div>
-                        <p>
-                            O suco de maçã integral é uma fonte de potássio, um mineral que atua no controle da atividade elétrica do coração.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
+            </section>
+        <?php } ?>
         <!-- RODA PÉ -->
         <footer>
             <?=$footer?>

@@ -145,7 +145,7 @@
                                             Seção 1
                                         </li>
                                     </a>
-                                    <a href="#">
+                                    <a href="secaoDoisSobre.php">
                                         <li class="menu_itens">
                                             Seção 2
                                         </li>

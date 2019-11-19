@@ -726,6 +726,12 @@ footer .conteudo {
     background-color: white;
 }
 
+.alcance_img {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
 #alcance .conteudo {
     padding-top: 140px;
     box-sizing: border-box;
@@ -735,7 +741,6 @@ footer .conteudo {
     width: 512px;
     height: 512px;
     margin-left: 120px;
-    background-image: url(../icons/sobre/brasil.png);
     background-size: contain;
     float: left;
 }

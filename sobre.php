@@ -142,17 +142,25 @@
             </section>
         
         <!-- Alcance da Empresa -->
-        <section id="alcance">
-            <div class="conteudo center">
-                <div id="alcance_imagem">
-                    
+        <?php 
+            $sql = "SELECT * FROM sectiondois_sobre WHERE status = 1";
+            $select = mysqli_query($conexao, $sql);
+            
+            if($rsConteudo = mysqli_fetch_array($select))
+            {
+        ?>
+            <section id="alcance">
+                <div class="conteudo center">
+                    <div id="alcance_imagem">
+                        <img src="cms/bd/arquivos/<?=$rsConteudo['imagem']?>" class="alcance_img">
+                    </div>
+                    <div id="alcance_titulo" style="color: <?=$rsConteudo['cor_texto']?>">
+                        <h1 id="alcance_titulo_form"><?=$rsConteudo['titulo']?></h1>
+                        <p id="alcance_text_form"><?=$rsConteudo['texto']?></p>
+                    </div>
                 </div>
-                <div id="alcance_titulo">
-                    <h1 id="alcance_titulo_form">Alcance em todo o território nacional.</h1>
-                    <p id="alcance_text_form">Atendemos demandas em todo o território nacional, cumprindo prazos e fornecendo produtos de qualidade para todos os estados brasileiros.</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        <?php } ?>
         
         <!-- RODA-PÉ -->
         <footer>

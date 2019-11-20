@@ -11,15 +11,14 @@
     $conexao = conexaoMysql();
 
     // Verifica se a página foi requisitada.
-    if(isset($_POST['submit-header']))
+    if(isset($_POST['submitConteudo']))
     {
-
+        
         // Pegando valores por post.
         $titulo = $_POST['titulo'];
         $subtitulo = $_POST['subtitulo'];
-        $imagem = $_SESSION['imagemPreview'];
-        $corTitulo = $_POST['colorTitulo'];
-        $corSubtitulo = $_POST['colorSubtitulo'];
+        $corTitulo = $_POST['cor_titulo'];
+        $corSubtitulo = $_POST['cor_subtitulo'];
         $status = 1;
 
         $sql = "UPDATE header_sobre SET status = 0 WHERE status = 1";
@@ -29,7 +28,7 @@
         {
             
             // Verificando se o modo é SALVAR.
-            if(strtoupper($_POST['submit-header']) == "SALVAR")
+            if(strtoupper($_POST['submitConteudo']) == "SALVAR")
             {
 
                 // Verifica se uma imagem foi selecionada
@@ -39,7 +38,7 @@
                             imagem, cor_titulo, 
                             cor_subtitulo, status)
                             VALUES ('".$titulo."', '".$subtitulo."', 
-                                    '".$imagem."', '".$corTitulo."', 
+                                    '".$_SESSION['imagemPreview']."', '".$corTitulo."', 
                                     '".$corSubtitulo."', '".$status."')";
                 else
                     // Script para inserir os valores no banco, mas sem inserir imagem.
@@ -50,7 +49,7 @@
                                     '".$status."')";
                     
             } // Script a ser executado caso o mdo seja editar.
-            else if(strtoupper($_POST['submit-header']) == "EDITAR") {
+            else if(strtoupper($_POST['submitConteudo']) == "EDITAR") {
 
                 // Se uma imagem foi selecionada, insere-a no banco
                 if(isset($_SESSION['imagemPreview']))          
@@ -89,6 +88,6 @@
             header("location: ../admHeaderSobre.php");
         }
         else
-            echo(ERRO_EXECUCAO_SCRIPT);
+            echo($sql);
 
 ?>

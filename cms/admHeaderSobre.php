@@ -8,55 +8,42 @@
     // Conectando-se ao banco.
     $conexao = conexaoMysql();
 
+    // Declarando variáveis.
+    // Nome da tabela na qual serão buscados, 
+    // Através do SELECT no banco, os conteúdos já cadastrados
+    $nomeTabela = "header_sobre";
+    $headerSelected = (string) "";
+    $section_umSelected = (string) "";
+    $section_doisSelected = (string) "";
+
     // Verificando se as variáveis de sessão já foram iniciadas.
     if(!isset($_SESSION))
         session_start();
 
+    if(isset($_GET['submitFiltro']))
+    {
+
+        $nomeTabela = $_GET['select-curiosidades']; // Recebe o tipo de conteúdo que o usuário selecionou.   
+
+        // Verificando a opção de filtro do usuário. Serve para passar ao select do conteúdo a tabela alvo.
+        switch(strtoupper($nomeTabela)){
+            case "HEADER_SOBRE":
+                $headerSelected = "selected";
+                break;
+            case "SECTIONUM_SOBRE":
+                $section_umSelected = "selected";
+                break;
+            case "SECTIONDOIS_SOBRE":
+                $section_doisSelected = "selected";
+                break;
+        }
+
+
+    }
 
     // Retorna os elementos HTML equivalentes ao nível de permissões do usuário.
     $elementoHtmlPermissoes = permissoesUsuario($conexao, $_SESSION['id_usuario']);
 
-    $titulo = (string) "";
-    $subtitulo = (string) "";
-    $imagem = (string) "<img src='icons/photo-camera.png' class='preview-icon-headersobre'>";
-    $corTitulo = (string) "";
-    $corSubtitulo = (string) "";
-    $valorBotao = (string) "Salvar";
-
-    // Verificando se esta página foi requisitada.
-    if(isset($_GET['codigo']))
-    {
-
-        // Verificando se o modo é edição
-        if(strtoupper($_GET['modo']) == "EDITAR")
-        {
-
-            // Executando SCRIPT para buscar o registro selecionado.
-            $sql = "SELECT * FROM header_sobre WHERE id = ".$_GET['codigo'];
-            $select = mysqli_query($conexao, $sql);
-
-            if($rsConteudo = mysqli_fetch_array($select))
-            {
-
-                // Criando variáveis de sessão.
-                $_SESSION['imagemAntiga'] = $rsConteudo['imagem'];
-                $_SESSION['codigoRegistro'] = $rsConteudo['id'];
-
-                // Pegando as informações do registro.
-                $titulo = $rsConteudo['titulo'];
-                $subtitulo = $rsConteudo['subtitulo'];
-                $corTitulo = $rsConteudo['cor_titulo'];
-                $corSubtitulo = $rsConteudo['cor_subtitulo'];
-                $imagem = "<img src='bd/arquivos/".$rsConteudo['imagem']."' class='preview-icon-headersobre'>";
-                $valorBotao = "Editar";
-
-            }
-
-        }
-
-    }
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -64,30 +51,213 @@
     <head>
         <meta charset="utf-8">
         <link type="text/css" rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
         <title>Conteúdo CMS</title>
         <script src="js/jquery.js"></script>
         <script src="js/jquery.form.js"></script>
         <script>
         
-        $(document).ready(function (){
+            $(document).ready(function () {
 
-            // Executa quando um arquivo é selecionado na tag input.
-            $("#input-image-headersobre").live("change", function(){
+                // Modal aparecerá quando um editar for clicado.
+                $('.btn-editar').click(function () {
 
-                // Envia a imagem para o upload e a insere na div de preview.
-                $("#form-image-headersobre").ajaxForm({
+                    $('.container-modal').fadeIn(500);
 
-                    target: '#label-preview-image'
+                });
 
-                }).submit();
+                // Modal fecha quando botão de fechar for clicado.
+                $('.close-modal').click(function () {
+
+                    $('.container-modal').fadeOut(500);
+
+                });
+
+                // Abre o menu de opções de conteúdo a serem inseridos.
+                $('.add-conteudo').click(function () {
+
+                    $('.container-opcoes').fadeIn(500);
+
+                });
+
+                $('.fechar-modal').click(function () {
+
+                    $('.container-opcoes').fadeOut(500);
+
+                });
+
+                $("#input-image").live("change", function() {
+
+                    $("#form-image").ajaxForm({
+
+                        target: '.container-image-preview'
+
+                    }).submit();
+
+                });
+
+                $("#input-image-curiosidades").live("change", function() {
+
+                    $("#form-image-curiosidades").ajaxForm({
+
+                        target: '.container-image-preview-curiosidades'
+
+                    }).submit();
+
+                });
 
             });
 
-        });
+            // Recebe ID de um registro no banco.
+            function resgatarDados(idRegistro, modal) {
+
+                if(modal == "curiosidades") {
+
+                    $.ajax({
+
+                        type: "POST",
+                        url: "modalCuriosidades.php",
+                        data: {codigo:idRegistro},
+                        success: function(dados) {
+                            $('.cont-modal-conteudo').html(dados);
+                        }
+
+                    }); 
+
+                } else {
+
+                    $.ajax({
+
+                        type: "POST",
+                        url: "modalIntroducao.php",
+                        data: {codigo:idRegistro, tabela:'introducao_curiosidades'},
+                        success: function(dados) {
+                            $('.cont-modal-conteudo').html(dados);
+                        }
+
+                    }); 
+
+                }
+                
+
+            }
 
         </script>
     </head>
     <body>
+        <div class="container-modal">
+            <div class="modal center">
+                <div class="close-modal">
+                    <img src="icons/erro.png" class="icon-pequeno">
+                </div>
+                <div class="cont-modal-conteudo">
+                </div>
+            </div>
+        </div>
+        <div class="container-opcoes">
+            <div class="cont-opcoes-conteudo center" id="cont-opcoes-conteudo-section2">
+                <div class="close-modal fechar-modal" id="close-conteudo-section2">
+                    <img src="icons/erro.png" class="icon-pequeno">
+                </div>
+                <h1 class="titulo-opcoesConteudo center">Selecione um conteúdo</h1>
+                <div class="cont-opcoes-section2 center">
+                    <div class="titulo-opcao txt-center float-left">
+                        <h1 class="opcao-title center">
+                            Cabeçalho
+                        </h1>
+                        <a href="addIntroducao.php">
+                            <div class="container-opcao">
+                                <div class="opcao" id="opcao-header-sobre">
+                                    <div class="linha-titulo-opcao center" id="titulo-opcao-headersobre">
+                                        
+                                    </div>
+                                    <div class="linha-curta-header center">
+                                        
+                                    </div>
+                                    <div class="icone-imagem-background">
+                                        <img src="icons/picture.png" class="img-options-bkg">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="titulo-opcao txt-center float-left">
+                        <h1 class="opcao-title center">
+                            Section 1
+                        </h1>
+                        <a href="addCuriosidades.php">
+                            <div class="container-opcao">
+                                <div class="opcao" id="opcao-section2-sobre">
+                                    <div class="linha-titulo-opcao center" id="titulo-opcao-headersobre">
+                                        
+                                    </div>
+                                    <div class="opcao-textos-section2">
+                                        <div class="texto-opcao-section2">
+                                            <div class="textos-opcao-intro">
+
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="icone-imagem-background" id="ic-img-bkg-section2">
+                                        <img src="icons/picture.png" class="img-options-bkg">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="titulo-opcao txt-center float-left">
+                        <h1 class="opcao-title center">
+                            Section 2
+                        </h1>
+                        <a href="addIntroducao.php">
+                            <div class="container-opcao">
+                                <div class="opcao" id="opcao-section3">
+                                    <div class="opcao-imagem float-left">
+                                        <div class="image-opcao center" id="image-opcao-section2">
+
+                                        </div>
+                                    </div>
+                                    <div class="section3-text">
+                                        <div class="linha-grande">
+                                            
+                                        </div>
+                                        <div class="texto-opcao-section3">
+                                            <div class="textos-opcao-intro">
+
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                            <div class="textos-opcao-intro">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>  
+            </div>
+        </div>
         <div class="imagem_fundo">
             <section class="cms">
                 <div class="conteudo center">
@@ -132,129 +302,128 @@
                             </div>
                         </div>
                         <!-- Conteúdo -->
-                        <div class="cms_conteudo" id="adm-sobre">
-                            <div class="container_menu">
-                                <ul class="menu">
-                                    <a href="admHeaderSobre.php">
-                                        <li class="menu_itens">
-                                            Cabeçalho
-                                        </li>
-                                    </a>
-                                    <a href="secaoUmSobre.php">
-                                        <li class="menu_itens">
-                                            Seção 1
-                                        </li>
-                                    </a>
-                                    <a href="secaoDoisSobre.php">
-                                        <li class="menu_itens">
-                                            Seção 2
-                                        </li>
-                                    </a>
-                                </ul>
-                            </div>
-                            <div class="container-cadastro-header center">
-                                <form name="frmFormulario" method="post" action="bd/inserirHeaderSobre.php">
-                                    <div class="cont-titulo-adm center">
-                                        <h1 class="center txt-center">TITULO</h1>
-                                        <input name="titulo" value="<?=$titulo?>" required class="titulo-admheader" type="text" maxlength="49" placeholder="Insira seu título">
-                                        <input type="color" value="<?=$corTitulo?>" name="colorTitulo"><label>Cor da fonte do título</label>
-                                    </div>
-                                    <div class="cont-subtitulo-adm center">
-                                        <h1 class="center txt-center">Subtitulo</h1>
-                                        <input name="subtitulo" value="<?=$subtitulo?>" required class="subtitulo-admheader center" type="text" maxlength="49" placeholder="Insira seu subtitulo">
-                                        <input type="color" value="<?=$corSubtitulo?>" name="colorSubtitulo"><label>Cor da fonte do subtítulo</label>
-                                    </div>
-                                    <div class="cont-preview-img center">
-                                        <div id="preview-image-headersobre">
-                                            <label for="input-image-headersobre" id="label-preview-image">
-                                                <?=$imagem?>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="container-submit-headersobre center">
-                                        <input name="submit-header" class="submit-headersobre center" type="submit" value="<?=$valorBotao?>">
-                                    </div>
-                                </form>
-                                <form name="frmImagem" action="bd/upload.php" method="post" id="form-image-headersobre" enctype="multipart/form-data">
-                                    <input name="imagem" type="file" class="input_imagens" id="input-image-headersobre">
-                                </form>
-                            </div>
-                            <div id="container_usuarios_cadastrados_header">
-                                <div class="center crud-headerSobre" id="tabela_usuarios_cadastrados-header">
-                                    <div class="titulo_cadastrados">
-                                        Cabeçalhos cadastrados
-                                    </div>
-                                    <div class="cont_cedulas_tabela">
-                                        <div class="nome_cedula">
-                                            Imagem
-                                        </div>
-                                        <div class="nome_cedula">
-                                            Titulo
-                                        </div>
-                                        <div class="nome_cedula">
-                                            Subtitulo
-                                        </div>
-                                        <div class="nome_cedula">
-                                            Status
-                                        </div>
-                                        <div class="nome_cedula">
-                                            Opções
-                                        </div>
-                                    </div>
-                                    <?php 
+                        <div class="cms_conteudo" id="adm_curiosidades">
+                            <div class="novo-conteudo txt-center center">
+                                <h1 class="center title-medio">Inserir novo conteúdo</h1>
+                                <img class="new-icon add-conteudo center" src="icons/plus.png">
+                            </div>  
+                            <div class="container-table center">
+                                <div class="container-label">
+                                    <form name="frmFiltro" method="get" action="admHeaderSobre.php">
+                                        <label class="label-medio float-left">Buscar por: </label>
+                                        <select name="select-curiosidades" class="slc-curiosidades float-left">
+                                            <option value="header_sobre" <?=$headerSelected?>>
+                                                Header
+                                            </option>
+                                            <option value="sectionum_sobre" <?=$section_umSelected?>>
+                                                Section 1
+                                            </option>
+                                            <option value="sectiondois_sobre" <?=$section_doisSelected?>>
+                                                Section 2
+                                            </option>
+                                        </select>
+                                        <input type="submit" name="submitFiltro" value="Buscar" class="btn-buscar float-left">
+                                    </form>
+                                </div>
+                                <div class="container-cards">
+                                    <?php
                                     
-                                        // Script para trazer os usuários cadastrados no banco e seus níveis .
-                                        $sql = "SELECT * FROM header_sobre";
+                                        $sql = "SELECT * FROM ".$nomeTabela;
                                         $select = mysqli_query($conexao, $sql);
 
-                                        $contador = 0;
-
-                                        while($rsConteudos = mysqli_fetch_array($select))
+                                    while($rsConteudo = mysqli_fetch_array($select))
+                                    {
+                                        if($nomeTabela == "header_sobre")
                                         {
-                                            $contador++;
-
-                                            // Utilizando uma variável contadora para "zebrar" as linhas da tabela.
-                                            if($contador % 2 == 0)
-                                                $corLinha = "listra_branca";
-                                            else
-                                                $corLinha = "listra_negra";
-
                                     ?>
-                                    <div class="container_dados_campo <?=$corLinha?>">
-                                        <div class="campo_info campo-imageCrud">
-                                            <img src="bd/arquivos/<?=$rsConteudos['imagem']?>" class="image-crud">
-                                        </div>
-                                        <div class="campo_info">
-                                            <?=$rsConteudos['titulo']?>
-                                        </div>
-                                        <div class="campo_info">
-                                            <?=$rsConteudos['subtitulo']?>
-                                        </div>
-                                        <div class="campo_info">
-                                        <!-- Verificando o status e exibindo o ícone adequado (Ativado/Desativado) -->
-                                        <?php if($rsConteudos['status'] == 1){ ?>
-                                            <a href="bd/statusHeader.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
-                                                <img src="icons/icons8-toggle-on-32.png" alt="Ativar">
-                                            </a>
-                                        
-                                        <?php } else{ ?>
-                                            <a href="bd/statusHeader.php?codigo=<?=$rsConteudos['id']?>&modo=status&status=<?=$rsConteudos['status']?>">
-                                                <img src="icons/icons8-toggle-off-32.png" alt="Desativar">
-                                            </a>
-                                        <?php } ?>
-                                        </div>
-                                        <div class="campo_info">
-                                            <div class="opcoes_imagens">
-                                                <a href="admHeaderSobre.php?modo=editar&codigo=<?=$rsConteudos['id'];?>">
-                                                    <img src="icons/editar.png" class="imagens_opcoes">
-                                                </a>
-                                                <a onclick="return confirm('Você realmente deseja excluir este registro?');" href="bd/excluirConteudo.php?codigo=<?=$rsConteudos['id']?>&tabela=header_sobre&pagina=secaoUmSobre.php">
-                                                    <img src="icons/claro.png" class="imagens_opcoes">
-                                                </a>
+                                        <div class="cont-card">
+                                            <div class="card-conteudo-bkg " style="background-image: url('bd/arquivos/<?=$rsConteudo['imagem']?>')">
+                                                <h1 class="card-title-bkg txt-center" style="color: <?=$rsConteudo['cor_titulo']?>"><?=$rsConteudo['titulo']?></h1>
+                                                <h2 class="subtitulo-card" style="color: <?=$rsConteudo['cor_subtitulo']?>">
+                                                    <?=$rsConteudo['subtitulo']?>
+                                                </h2>
+                                            </div>
+                                            <div class="card-opcoes">
+                                                <div class="cont-opcoes-icon">
+                                                    <div class="cont-icon">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                            <img class="card-opcoes-icon" src="icons/error.png">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <?php
+                                                            if($rsConteudo['status'] == 1) {
+                                                        ?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
+                                                            </a>
+                                                        <?php } else {?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
+                                                            </a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>)">
+                                                            <img class="card-opcoes-icon" src="icons/edit.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <?php } ?>
+                                    <?php } else { ?>
+                                        <div class="cont-card-curiosidades" style="background-color: <?=$rsConteudo['cor_fundo']?>">
+                                            <div class="card-conteudo-curiosidades">
+                                                <h1 class="card-title txt-center over-hidden" style="color: <?=$rsConteudo['cor_texto']?>"><?=$rsConteudo['titulo_um']?></h1>
+                                                <div class="cont-card-conteudo-curiosidades">
+                                                    <div class="cont-card-img-curiosidades">
+                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img-curiosidades">
+                                                    </div>
+                                                    <div class="card-text-curiosidades" style="color: <?=$rsConteudo['cor_texto']?>">
+                                                        <div class="titulo-text-curiosidades over-hidden">
+                                                            <?=$rsConteudo['titulo_dois']?>
+                                                        </div>
+                                                        <div class="texto-curiosidades-card over-hidden">
+                                                            <?=$rsConteudo['texto_um']?>
+                                                        </div>
+                                                        <div class="titulo-text-curiosidades over-hidden">
+                                                            <?=$rsConteudo['titulo_tres']?>    
+                                                        </div>
+                                                        <div class="texto-curiosidades-card over-hidden">
+                                                            <?=$rsConteudo['texto_dois']?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-opcoes-curiosidades">
+                                                <div class="cont-opcoes-icon-curiosidades">
+                                                    <div class="cont-icon">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php?">
+                                                            <img class="card-opcoes-icon" src="icons/error.png">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <?php
+                                                            if($rsConteudo['status'] == 1) {
+                                                        ?>
+                                                            <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
+                                                            </a>
+                                                        <?php } else {?>
+                                                            <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php?">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
+                                                            </a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>, 'curiosidades')">
+                                                            <img class="card-opcoes-icon" src="icons/edit.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } } ?>
                                 </div>
                             </div>
                         </div>

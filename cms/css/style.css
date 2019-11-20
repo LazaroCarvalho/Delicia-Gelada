@@ -1176,8 +1176,10 @@ a {
 }
 
 .container-cards {
-    width: 1300px;
+    width: 1350px;
     height: 700px;
+    padding-left: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1190,7 +1192,7 @@ a {
 
 .container-label {
     width: 550px;
-    height: 100px;
+    height: 70px;
     margin-left: 50px;
 }
 
@@ -1201,12 +1203,19 @@ a {
     margin-left: 10px;
 }
 
-.card-conteudo, .card-conteudo-curiosidades  {
+.card-conteudo, .card-conteudo-curiosidades, .card-conteudo-bkg {
     width: 400px;
     height: 300px;
     padding-top: 10px;
     box-sizing: border-box;
     border-radius: 30px 30px 0 0;
+}
+
+.card-conteudo-bkg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 110px;
+    box-sizing: border-box;
 }
 
 .card-conteudo-curiosidades {
@@ -1222,6 +1231,10 @@ a {
     border-radius: 30px;
     box-shadow: 6px 6px #5e5e5e;
     border: 1px solid black;
+}
+
+.cont-card-headsobre {
+    
 }
 
 .cont-card-curiosidades {
@@ -1251,10 +1264,15 @@ a {
     height: 180px;
 }
 
-.card-title {
+.card-title, .card-title-bkg {
     font-size: 32px;
     margin: 0px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.card-title-bkg {
+    font-family: 'Indie Flower', sans-serif;
+    font-size: 38px;
 }
 
 .cont-card-img, .cont-card-img-curiosidades {
@@ -1532,7 +1550,7 @@ a {
     box-sizing: border-box;
 }
 
-.cont-opcoes-conteudo {
+.cont-opcoes-conteudo, #cont-opcoes-conteudo-section2 {
     width: 850px;
     height: 500px;
     background-color: white;
@@ -1541,15 +1559,23 @@ a {
     border-radius: 30px;
 }
 
+#cont-opcoes-conteudo-section2 {
+    width: 1302px;
+}
+
 .titulo-opcoesConteudo {
     font-size: 38px;
     text-align: center;
     font-family: 'Muli', sans-serif;
 }
 
-.cont-opcoes {
+.cont-opcoes, .cont-opcoes-section2 {
     width: 800px;
     height: 380px;
+}
+
+.cont-opcoes-section2 {
+    width: 1200px;
 }
 
 .container-opcao {
@@ -1565,11 +1591,16 @@ a {
     font-family: 'Open sans', sans-serif;
 }
 
-#close-conteudo {
+#close-conteudo, #close-conteudo-section2 {
     padding: 0px;
     margin-top: -8px;
     margin-left: 800px;
     position: fixed;
+}
+
+#close-conteudo-section2 {
+    margin-top: -5px;
+    margin-left: 1245px;
 }
 
 .opcao {
@@ -1606,7 +1637,7 @@ a {
     background-color: #d4d4d4;
 }
 
-.opcao-textos {
+.opcao-textos, .opcao-textos-section2 {
     width: 170px;
     height: 195px;
     margin-top: 15px;
@@ -1614,7 +1645,17 @@ a {
     box-sizing: border-box;
 }
 
-.linha-grande, .linha-curta {
+.opcao-textos-section2 {
+    height: 60px;
+    margin-top: 8px;
+    margin-left: 89px;
+}
+
+#ic-img-bkg-section2 {
+    margin-top: 100px;
+}
+
+.linha-grande, .linha-curta, .linha-curta-header  {
     width: 130px;
     height: 25px;
     margin-bottom:  15px;
@@ -1623,11 +1664,24 @@ a {
     background-color: #d4d4d4;
 }
 
+.linha-curta-header {
+    margin-left: 115px;
+}
+
 .linha-curta {
     width: 105px;
 }
 
-.texto-opcao {
+#opcao-header-sobre {
+    padding-top: 90px;
+    box-sizing: border-box;
+}
+
+#titulo-opcao-headersobre {
+    width: 180px;
+}
+
+.texto-opcao, .texto-opcao-section2, .texto-opcao-section3 {
     width: 165px;
     height: 170px;
     background-color: #d4d4d4;
@@ -1637,9 +1691,21 @@ a {
     box-sizing: border-box;
 }
 
-#texto-opcao-introducao {
+.texto-opcao-section3 {
+    height: 108px;
+}
+
+.texto-opcao-section2 {
+    height: 140px;
+}
+
+#texto-opcao-introducao, {
     padding-top: 5px;
     box-sizing: border-box;
+}
+
+#texto-opcao-introducao-section2 {
+    
 }
 
 .textos-opcao-intro {
@@ -1864,4 +1930,48 @@ a {
 
 #container_registro_section1 {
     height: 900px;
+}
+
+#opcao-section2-sobre {
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+.icone-imagem-background {
+    width: 56px;
+    height: 56px;
+    float: right;
+    margin-right: 5px;
+    margin-top: 60px;
+}
+
+.img-options-bkg {
+    width: 100%;
+    height: 100%;
+    background-size: contain;   
+}
+
+#opcao-section3 {
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+#image-opcao-section2 {
+    width: 160px;
+    height: 160px;
+    margin-left: 10px;
+    float: left;
+}
+
+.section3-text {
+    width: 180px;
+    height: 150px;
+    float: left;
+    margin-top: 10px;
+}
+
+.subtitulo-card {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    margin: 5px;
 }

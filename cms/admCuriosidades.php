@@ -288,7 +288,7 @@
                                         </select>
                                         <input type="submit" name="submitFiltro" value="Buscar" class="btn-buscar float-left">
                                     </form>
-                                <div>
+                                </div>
                                 <div class="container-cards">
                                     <?php
                                     
@@ -325,11 +325,11 @@
                                                         ?>
                                                             <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
-                                                            <a>
+                                                            </a>
                                                         <?php } else {?>
                                                             <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
-                                                            <a>
+                                                            </a>
                                                         <?php } ?>
                                                     </div>
                                                     <div class="cont-icon">
@@ -377,11 +377,11 @@
                                                         ?>
                                                             <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
-                                                            <a>
+                                                            </a>
                                                         <?php } else {?>
                                                             <a href="bd/status.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admCuriosidades.php?">
                                                                 <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
-                                                            <a>
+                                                            </a>
                                                         <?php } ?>
                                                     </div>
                                                     <div class="cont-icon">

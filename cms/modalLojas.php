@@ -41,7 +41,7 @@
         <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="card_cadastro_conteudo center lojas-card-center">
+        <div class="center" id="card-lojas-cadastro">
             <form name="formularioConteudo" method="post" action="bd/addLojas.php" enctype="multipart/form-data">
                 <div class="image-lojas center">
                     <label for="input-image" id="label-preview-image">
@@ -54,7 +54,7 @@
                     <input name="estado" maxlength="30" type="text" class="inputs-lojas center" placeholder="Insira seu estado" value="<?=$estado?>" required>
                     <input name="telefone" maxlength="30" type="text" class="inputs-lojas center" placeholder="Insira seu telefone" value="<?=$telefone?>" required>
                 </div>
-                <div class="container-submit-headersobre center">
+                <div class="container-submit-headersobre center" id="botao-lojas-modal">
                     <input name="submitConteudo" class="submit-introducao center" id="submit-lojas" type="submit" value="Editar">
                 </div>
             </form>

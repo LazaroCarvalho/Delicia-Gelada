@@ -980,7 +980,7 @@ a {
     
 }
 
-.card_cadastro_conteudo {
+.card_cadastro_conteudo, .card-lojas-cadastro {
     width: 600px;
     height: 600px;
     box-shadow: 6px 6px 6px 6px #9c9ea1;
@@ -992,6 +992,8 @@ a {
     font-family: sans-serif;
     box-sizing: border-box;
 }
+
+
 
 .titulo_home_adm {
     width: 600px;
@@ -2262,4 +2264,12 @@ a {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+#card-lojas-cadastro {
+    height: 300px;
+}
+
+#botao-lojas-modal {
+    margin-top: 8px;
 }

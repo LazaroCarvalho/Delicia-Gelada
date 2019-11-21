@@ -134,7 +134,7 @@
     </head>
     <body>
         <div class="container-modal">
-            <div class="modal-lojas center">
+            <div class="modal center">
                 <div class="close-modal center">
                     <img src="icons/erro.png" class="icon-pequeno">
                 </div>

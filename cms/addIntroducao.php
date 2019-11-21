@@ -112,11 +112,11 @@
                                             </div>
                                         </div>
                                         <textarea name="texto" class="input_textos" maxlength="1100" required></textarea>
-                                    <div>
+                                    </div>
                                     <div class="container_color float-left">
                                         <input type="color" value="#ffffff" name="color" required>
                                         <label>Cor de fundo da seção</label>
-                                    <div>
+                                    </div>
                                     <div class="container-color-font float-left">
                                         <label>Cor do texto: </label>
                                         <select name="colorFont" required>

@@ -53,7 +53,7 @@
                             <label class="label-colors" style="color: <?=$cor_titulo?>">Cor do título</label>
                         </div>
                         <div class="option-title-color">
-                            <input name="cor_subtitulo" type="color" value="<?=$cor_subtitulotitulo?>">
+                            <input name="cor_subtitulo" type="color" value="<?=$cor_subtitulo?>">
                             <label class="label-colors" style="color: <?=$cor_subtitulo?>">Cor do Subtítulo</label>
                         </div>
                     </div>

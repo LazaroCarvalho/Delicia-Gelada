@@ -45,7 +45,7 @@
         <form name="frmModalConteudo" method="post" action="bd/inserirIntroducaoConteudo.php">
             <div class="cont-modal" style="background-color: <?=$corBackground?>">
                 <div class="cont-titulo-modal center">
-                    <input name="titulo" class="titulo-modal txt-center center" 
+                    <input maxlength="99" name="titulo" class="titulo-modal txt-center center" 
                             value="<?=$titulo?>" style="background-color: <?=$corBackground?>; color: <?=$corFont?>">
                 </div>
                 <div class="text-imagem-modal center">
@@ -59,7 +59,7 @@
                             </label>
                         </div>
                     </div>
-                    <textarea name="texto" class="texto-modal float-left" style="background-color: <?=$corBackground?>;color: <?=$corFont?>"><?=$texto?>
+                    <textarea  maxlength="1199" name="texto" class="texto-modal float-left" style="background-color: <?=$corBackground?>;color: <?=$corFont?>"><?=$texto?>
                     </textarea>
                 </div>
                 <div class="colors-options center" style="color: <?=$corFont?>">

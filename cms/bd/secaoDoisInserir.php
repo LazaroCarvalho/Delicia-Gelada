@@ -11,13 +11,18 @@
     $conexao = conexaoMysql();
 
     // Verifica se a página foi requisitada.
-    if(isset($_POST['submit-header']))
+    if(isset($_POST['submitConteudo']))
     {
 
         // Pegando valores por post.
         $titulo = $_POST['titulo'];
         $texto = $_POST['texto'];
-        $corFont = $_POST['cor_texto'];
+        
+        if($_POST['cor_texto'] == "dark")
+            $corFont = "#ffffff";
+        else
+            $corFont = "#000000";
+        
         $status = 1;
 
         $sql = "UPDATE sectiondois_sobre SET status = 0 WHERE status = 1";
@@ -27,7 +32,7 @@
         {
             
             // Verificando se o modo é SALVAR.
-            if(strtoupper($_POST['submit-header']) == "SALVAR")
+            if(strtoupper($_POST['submitConteudo']) == "SALVAR")
             {
 
                 // Verifica se uma imagem foi selecionada
@@ -37,8 +42,7 @@
                             imagem, cor_texto,
                             status)
                             VALUES ('".$titulo."', '".$texto."', 
-                                    '".$_SESSION['imagemPreview']."', '".$corFont."',
-                                    '".$status."')";
+                                    '".$_SESSION['imagemPreview']."', '".$corFont."', '".$status."')";
                 else
                     // Script para inserir os valores no banco, mas sem inserir imagem.
                     $sql = "INSERT INTO sectiondois_sobre (titulo, texto, cor_texto,
@@ -47,16 +51,16 @@
                                     '".$corFont."', '".$status."')";
                     
             } // Script a ser executado caso o mdo seja editar.
-            else if(strtoupper($_POST['submit-header']) == "EDITAR") {
+            else if(strtoupper($_POST['submitConteudo']) == "EDITAR") {
 
                 // Se uma imagem foi selecionada, insere-a no banco
                 if(isset($_SESSION['imagemPreview']))          
                     $sql = "UPDATE sectiondois_sobre SET titulo = '".$titulo."', texto = '".$texto."',
-                                imagem = '".$_SESSION['imagemPreview']."', cor_texto = '".$corTitulo."',
+                                imagem = '".$_SESSION['imagemPreview']."', cor_texto = '".$corFont."',
                                 status = '".$status."' WHERE id = ".$_SESSION['codigoRegistro'];
                 else    // Se não, insere infos no banco sem imagem.
                     $sql = "UPDATE sectiondois_sobre SET titulo = '".$titulo."', texto = '".$texto."',
-                                   cor_texto = '".$corTitulo."',
+                                   cor_texto = '".$corFont."',
                                    status = '".$status."' WHERE id = ".$_SESSION['codigoRegistro'];
             }
 
@@ -72,7 +76,7 @@
             if(isset($_SESSION['imagemPreview']))
             {
                 if(strtoupper($_POST['modo']) == "EDITAR")// Se o modo é editar, exclui também a imagem antiga.
-                    unlink("arquivos/".$_SESSION['imagemAntiga']);
+                    unlink("arquivos/".$_SESSION['imagemRegistro']);
 
                 unset($_SESSION['imagemPreview']);
             }
@@ -82,12 +86,11 @@
                 unset($_SESSION['imagemAntiga']);
                 unset($_SESSION['codigoRegistro']);
             }
-
-                
-            header("location: ../secaoDoisSobre.php");
+            
+            header("location: ../admHeaderSobre.php?select-curiosidades=sectiondois_sobre");
         }
         else
-            echo($sql);
+            echo(ERRO_EXECUCAO_SCRIPT);
 
     }
 

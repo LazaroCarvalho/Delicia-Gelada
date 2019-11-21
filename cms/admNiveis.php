@@ -61,7 +61,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Administração de Usuários</title>
+        <title>Administração de Níveis</title>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/jquery.js"></script>
     </head>
@@ -115,16 +115,16 @@
                                 <div id="cont_conteudo_all">
                                     <div class="container_menu">
                                         <ul class="menu">
-                                            <a href="admNiveis.php">
-                                                <li class="menu_itens">
+                                            <li class="menu_itens">
+                                                <a href="admNiveis.php">
                                                     Administrar Níveis
-                                                </li>
-                                            </a>
-                                            <a href="admUsuarios.php">
-                                                <li class="menu_itens">
+                                                </a>
+                                            </li>
+                                            <li class="menu_itens">
+                                                <a href="admUsuarios.php">
                                                     Administrar Usuários
-                                                </li>
-                                            </a>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div id="container_cadastro_niveis">
@@ -263,7 +263,7 @@
                                                     <a href="admNiveis.php?modo=editar&codigo=<?=$rsNiveis['id'];?>">
                                                         <img src="icons/editar.png" class="imagens_opcoes">
                                                     </a>
-                                                    <a onclick="return confirm('Você realmente deseja excluir este registro?')" href="bd/modificarNiveis.php?modo=excluir&codigo=<?=$rsNiveis['id']?>">
+                                                    <a onclick="return confirm('ATENÇÃO!!! Este nível pode estar associado a um ou mais usuários. Se você o excluir, estará excluindo todos os usuários associados a ele. Deseja realmente continuar?')" href="bd/modificarNiveis.php?modo=excluir&codigo=<?=$rsNiveis['id']?>">
                                                         <img src="icons/claro.png" class="imagens_opcoes">
                                                     </a>
                                                 </div>

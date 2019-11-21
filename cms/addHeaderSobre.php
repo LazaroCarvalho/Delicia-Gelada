@@ -97,12 +97,12 @@
                                     <div class="cont-titulo-adm center">
                                         <h1 class="center txt-center">TITULO</h1>
                                         <input name="titulo" required class="titulo-admheader" type="text" maxlength="49" placeholder="Insira seu título">
-                                        <input type="color" name="colorTitulo"><label>Cor da fonte do título</label>
+                                        <input type="color" name="cor_titulo"><label>Cor da fonte do título</label>
                                     </div>
                                     <div class="cont-subtitulo-adm center">
                                         <h1 class="center txt-center">Subtitulo</h1>
                                         <input name="subtitulo" required class="subtitulo-admheader center" type="text" maxlength="49" placeholder="Insira seu subtitulo">
-                                        <input type="color" name="colorSubtitulo"><label>Cor da fonte do subtítulo</label>
+                                        <input type="color" name="cor_subtitulo"><label>Cor da fonte do subtítulo</label>
                                     </div>
                                     <div class="cont-preview-img center">
                                         <div id="preview-image-headersobre">

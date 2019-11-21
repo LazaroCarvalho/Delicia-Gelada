@@ -11,13 +11,13 @@
     $conexao = conexaoMysql();
 
     // Verifica se a página foi requisitada.
-    if(isset($_POST['submit-header']))
+    if(isset($_POST['submitConteudo']))
     {
 
         // Pegando valores por post.
         $titulo = $_POST['titulo'];
         $texto = $_POST['texto'];
-        $corFont = $_POST['cor_texto'];
+        $corFont = $_POST['cor_font'];
         $status = 1;
 
         $sql = "UPDATE sectionum_sobre SET status = 0 WHERE status = 1";
@@ -27,7 +27,7 @@
         {
             
             // Verificando se o modo é SALVAR.
-            if(strtoupper($_POST['submit-header']) == "SALVAR")
+            if(strtoupper($_POST['submitConteudo']) == "SALVAR")
             {
 
                 // Verifica se uma imagem foi selecionada
@@ -47,16 +47,16 @@
                                     '".$corFont."', '".$status."')";
                     
             } // Script a ser executado caso o mdo seja editar.
-            else if(strtoupper($_POST['submit-header']) == "EDITAR") {
+            else if(strtoupper($_POST['submitConteudo']) == "EDITAR") {
 
                 // Se uma imagem foi selecionada, insere-a no banco
                 if(isset($_SESSION['imagemPreview']))          
                     $sql = "UPDATE sectionum_sobre SET titulo = '".$titulo."', texto = '".$texto."',
-                                imagem = '".$_SESSION['imagemPreview']."', cor_font = '".$corTitulo."',
+                                imagem = '".$_SESSION['imagemPreview']."', cor_font = '".$corFont."',
                                 status = '".$status."' WHERE id = ".$_SESSION['codigoRegistro'];
                 else    // Se não, insere infos no banco sem imagem.
                     $sql = "UPDATE sectionum_sobre SET titulo = '".$titulo."', texto = '".$texto."',
-                                   cor_font = '".$corTitulo."',
+                                   cor_font = '".$corFont."',
                                    status = '".$status."' WHERE id = ".$_SESSION['codigoRegistro'];
             }
 
@@ -83,11 +83,10 @@
                 unset($_SESSION['codigoRegistro']);
             }
 
-                
-            header("location: ../secaoUmSobre.php");
+            header("location: ../admHeaderSobre.php");
         }
         else
-            echo($sql);
+            echo(ERRO_EXECUCAO_SCRIPT);
 
     }
 

@@ -97,10 +97,10 @@
                                 </div>
                                 <div class="admpagina_item">
                                     <div class="admitem_imagem">
-                                    
+                                        <img src="icons/shop.png" class="icons_admconteudo">
                                     </div>
                                     <div class="admitem_titulo">
-                                        <a href="#">
+                                        <a href="introducaoLojas.php">
                                             <h2 class="adm_estilo">Administrar Lojas</h2>
                                             <p> Clique para editar a página</p>
                                         </a>

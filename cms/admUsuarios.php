@@ -120,7 +120,7 @@
                                                     Administrar Níveis
                                                 </li>
                                             </a>
-                                            <a>
+                                            <a href="admUsuarios.php">
                                                 <li class="menu_itens">
                                                     Administrar Usuários
                                                 </li>
@@ -184,7 +184,7 @@
                                                             <?php
 
                                                                 // Trazendo todos os níveis do banco e usando suas informações no <option>
-                                                                $sql = "SELECT * FROM tblniveis";
+                                                                $sql = "SELECT * FROM tblniveis WHERE status_nivel = 1";
                                                                 $select = mysqli_query($conexao, $sql);
 
                                                                 while($rsNiveis = mysqli_fetch_array($select))

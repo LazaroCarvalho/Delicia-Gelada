@@ -12,7 +12,7 @@
     {
 
         // Pegando o registro correspondente ao id recebido.
-        $sql = "SELECT * FROM header_sobre WHERE id = ".$_POST['codigo'];
+        $sql = "SELECT * FROM sectionum_sobre WHERE id = ".$_POST['codigo'];
         $select = mysqli_query($conexao, $sql);
 
         // Armazenando as informações deste ID.
@@ -43,18 +43,18 @@
         <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="cont-modal-headersobre" style="background-imagem: url('bd/arquivos/<?=$imagem?>')">
-            <form name="frmModalConteudo" method="post" action="bd/inserirHeaderSobre.php">
+        <div class="cont-modal-sectionum" style="background-image: url('bd/arquivos/<?=$imagem?>')">
+            <form name="frmModalConteudo" method="post" action="bd/secaoUmInserir.php">
                 <div class="container-modalContent-sobre center">
                     <div class="titulo-modal-header center" >
-                        <input name="titulo" class="input-titulo-modal-header" type="text" value="<?=$titulo?>" style="color: <?=$cor_titulo?>">
+                        <input name="titulo" class="input-titulo-modal-header" type="text" value="<?=$titulo?>" style="color: <?=$cor_font?>">
                     </div>
-                    <div class="subTitulo-modal-header center" style="color: <?=$cor_subtitulo?>">
-                        <input name="subtitulo" class="input-subtitulo-modal-header" type="text" value="<?=$subTitulo?>" style="color: <?=$cor_subtitulo?>">
+                    <div class="modal-text-sectionum center" style="color: <?=$cor_subtitulo?>">
+                        <textarea name="texto" class="texto-modal-sectionum" style="color: <?=$cor_font?>"><?=$texto?></textarea>
                     </div>
-                    <div class="option-title-color">
-                        <input class="input-header-modal-title" name="cor_titulo" type="color" value="<?=$cor_titulo?>">
-                        <label class="label-colors" style="color: <?=$cor_titulo?>">Cor do título</label>
+                    <div class="option-title-color-sectionum">
+                        <input class="input-header-modal-title" name="cor_font" type="color" value="<?=$cor_font?>">
+                        <label class="label-colors" style="color: <?=$cor_?>">Cor do texto</label>
                     </div>
                     <div class="imagem-header-modal center">
                         <label for="input-image-header">

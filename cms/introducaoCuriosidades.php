@@ -118,11 +118,11 @@
                                             <label>
                                         </div>
                                         <textarea name="texto" class="input_textos" maxlength="1100" required></textarea>
-                                    <div>
+                                    </label>
                                     <div id="container_color">
                                         <input type="color" name="color" required>
                                         <label>Cor de fundo da seção</label>
-                                    <div>
+                                    </div>
                                     <div class="container_submit">
                                         <input name="submitConteudo" type="submit" class="botao_cadastro" value="Salvar">
                                     </div>

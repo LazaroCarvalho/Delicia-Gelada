@@ -79,7 +79,7 @@
                     </div>
                     <div class='bkg_laranja' id='caixa_login'>
                         <div class='bkg_laranja' id='form_container'>
-                            <form name='frmformulario' method='post' action='bd/autenticacao.php'>
+                            <form name='frmformulario' method='post' action='cms/bd/autenticacao.php'>
                                 <div class='form_login'>
                                     Usuario: <br>
                                     <input name="usuario" type='text' class='input_form_login'>

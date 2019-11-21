@@ -1,6 +1,9 @@
 <?php 
 
     require_once('modulos/footer.php');
+    require_once('cms/bd/conexao.php');
+
+    $conexao = conexaoMysql();
 
     if(!isset($_SESSION))
         session_start();
@@ -59,7 +62,7 @@
                 </nav>
 
                 <!-- Formulário de login -->
-                    <div id='container_login'>
+                <div id='container_login'>
                     <div id='login_txt'>
                         Login 
                         <div id="seta_branca">
@@ -68,7 +71,7 @@
                     </div>
                     <div class='bkg_laranja' id='caixa_login'>
                         <div class='bkg_laranja' id='form_container'>
-                            <form name='frmformulario' method='post' action='bd/autenticacao.php'>
+                            <form name='frmformulario' method='post' action='cms/bd/autenticacao.php'>
                                 <div class='form_login'>
                                     Usuario: <br>
                                     <input name="usuario" type='text' class='input_form_login'>
@@ -92,74 +95,58 @@
         </div>
         
         <!-- Apresentando a Página -->
-        <section id="localize">
+        <?php 
+            
+            $sql = "SELECT * FROM introducao_lojas WHERE status = 1";
+            $select = mysqli_query($conexao, $sql);
+
+            if($rsConteudo = mysqli_fetch_array($select))
+            {
+        ?>
+        <section id="localize" style="background-color: <?=$rsConteudo['cor_fundo']?>">
             <div class="conteudo center">
                 <div class="center" id="localize_text">
-                    <div id="localize_imagem">
+                    <div id="localize_imagem" style="background-image: url('cms/bd/arquivos/<?=$rsConteudo['imagem']?>')">
                         
                     </div>
                     <div class="localize_texto">
                         <h1 id="localize_titulo">
-                            Localize a loja mais próxima de você!
+                            <?=$rsConteudo['titulo']?>
                         </h1>
                         <p class="localize_texto">
-                            Temos lojas em diversas regiões!
+                            <?=$rsConteudo['texto']?>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
+        <?php } ?>
         
         <!-- Lista de lojas -->
         <section id="lista_lojas">
             <h1 style="display: none;">a</h1>
             <div class="conteudo center">
                 <div class="center" id="container_lojas">
-                    <!-- Cards de cada Produto --> 
+                    <!-- Cards de cada Produto -->
+                    <?php 
+                        $sql = "SELECT * FROM tbllojas WHERE status = 1";
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while ($rsConteudo = mysqli_fetch_array($select))
+                        {
+                    ?>
                     <div class="card">
                         <div class="card_imagem center">
-                            <img alt="loja" class="card_imagens" src="imagens/lojas/loja1.jpg">
+                            <img alt="loja" class="card_imagens" src="cms/bd/arquivos/<?=$rsConteudo['imagem']?>">
                         </div>
                         <div class="card_info center"> 
-                            <p class="cards_info">Rua: Av. Rio Branco 3760 </p>
-                            <p class="cards_info">Cidade: Juíz de Fora</p>
-                            <p class="cards_info">Estado: Minas Gerais</p>
-                            <p class="cards_info">Telefone: (011) 8577-3226</p>
+                            <p class="cards_info"><?=$rsConteudo['rua']?></p>
+                            <p class="cards_info"><?=$rsConteudo['cidade']?></p>
+                            <p class="cards_info"><?=$rsConteudo['estado']?></p>
+                            <p class="cards_info"><?=$rsConteudo['telefone']?></p>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card_imagem center">
-                            <img alt="loja" class="card_imagens" src="imagens/lojas/loja2.jpg">
-                        </div>
-                        <div class="card_info center">
-                            <p class="cards_info">Rua: Rua Canal de Suez 337</p>
-                            <p class="cards_info">Cidade: Barueri</p>
-                            <p class="cards_info">Estado: São Paulo</p>
-                            <p class="cards_info">Telefone: (011) 4322-3122</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card_imagem center">
-                            <img alt="loja" class="card_imagens" src="imagens/lojas/loja3.jpg">
-                        </div>
-                        <div class="card_info center">
-                            <p class="cards_info">Rua: Rua das bananeiras 312</p>
-                            <p class="cards_info">Cidade: Santana de Parnaiba</p>
-                            <p class="cards_info">Estado: São Paulo</p>
-                            <p class="cards_info">Telefone: (011) 8455-3232</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card_imagem center">
-                            <img alt="loja" class="card_imagens" src="imagens/lojas/loja4.jpg">
-                        </div>
-                        <div class="card_info center">
-                            <p class="cards_info">Rua: Rua Otaviano Pisa </p>
-                            <p class="cards_info">Cidade: Barueri</p>
-                            <p class="cards_info">Estado: São Paulo</p>
-                            <p class="cards_info">Telefone: (011) 8922-4432</p>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>

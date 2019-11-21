@@ -74,7 +74,7 @@
                     </div>
                     <div class='bkg_preto' id='caixa_login'>
                         <div class='bkg_preto' id='form_container'>
-                            <form name='frmformulario' method='post' action='bd/autenticacao.php'>
+                            <form name='frmformulario' method='post' action='cms/bd/autenticacao.php'>
                                 <div class='form_login'>
                                     Usuario: <br>
                                     <input name="usuario" type='text' class='input_form_login'>
@@ -130,8 +130,8 @@
         ?>
             <section id="safras" style="background-image: url('cms/bd/arquivos/<?=$rsConteudo['imagem']?>')">
                 <div id="safras_pelicula">
-                    <div class="conteudo center" style="color: <?=$rsConteudo['cor_font']?>">
-                        <div class="sobre_titulos center">
+                    <div class="conteudo center">
+                        <div class="sobre_titulos center" style="color: <?=$rsConteudo['cor_font']?>">
                             <h1><?=$rsConteudo['titulo']?></h1>
                         </div>
                         <div class="sobre_textos center">

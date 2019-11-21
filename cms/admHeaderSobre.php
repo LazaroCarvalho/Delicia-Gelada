@@ -131,6 +131,21 @@
                     }); 
                     
                 }
+                else if(modal == "sectiondois")
+                {
+                 
+                    $.ajax({    // dados serão enviados para a modal da seção 1 da página                      sobre nós.
+
+                        type: "POST",
+                        url: "modalSectionDois.php",
+                        data: {codigo:idRegistro},
+                        success: function(dados) {
+                            $('.cont-modal-conteudo').html(dados);
+                        }
+
+                    });
+                    
+                }
 
             }
 
@@ -178,7 +193,7 @@
                         <h1 class="opcao-title center">
                             Section 1
                         </h1>
-                        <a href="addCuriosidades.php">
+                        <a href="secaoUmSobre.php">
                             <div class="container-opcao">
                                 <div class="opcao" id="opcao-section2-sobre">
                                     <div class="linha-titulo-opcao center" id="titulo-opcao-headersobre">
@@ -214,7 +229,7 @@
                         <h1 class="opcao-title center">
                             Section 2
                         </h1>
-                        <a href="addIntroducao.php">
+                        <a href="secaoDoisSobre.php">
                             <div class="container-opcao">
                                 <div class="opcao" id="opcao-section3">
                                     <div class="opcao-imagem float-left">
@@ -364,8 +379,8 @@
                                     <?php } elseif ($nomeTabela == "sectionum_sobre") { ?>
                                         <div class="cont-card" style="background-color: <?=$rsConteudo['cor_fundo']?>">
                                             <div class="card-conteudo-bkg-sectionum" style="background-image: url('bd/arquivos/<?=$rsConteudo['imagem']?>')">
-                                                <h1 class="card-title txt-center over-hidden comfortaa" style="color: <?=$rsConteudo['cor_texto']?>"><?=$rsConteudo['titulo']?></h1>
-                                                <div class="texto-card-sectionum center">
+                                                <h1 class="card-title txt-center over-hidden comfortaa" style="color: <?=$rsConteudo['cor_font']?>"><?=$rsConteudo['titulo']?></h1>
+                                                <div class="texto-card-sectionum center" style="color: <?=$rsConteudo['cor_font']?>">
                                                     <?=$rsConteudo['texto']?>
                                                 </div>
                                             </div>
@@ -391,6 +406,53 @@
                                                     </div>
                                                     <div class="cont-icon">
                                                         <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>, 'sectionum')">
+                                                            <img class="card-opcoes-icon" src="icons/edit.png">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } else {?>
+                                        <div class="cont-card">
+                                            <div class="card-conteudo">
+                                                <div class="cont-card-conteudo">
+                                                    <div class="cont-card-img-sectiondois">
+                                                        <img src="bd/arquivos/<?=$rsConteudo['imagem']?>" class="card-img">
+                                                    </div>
+                                                    <div class="card-text" style="color: <?=$rsConteudo['cor_texto']?>">
+                                                        <div class="container-sectiondois">
+                                                            <div class="sectiondois-titulo">
+                                                              <h2><?=$rsConteudo['titulo']?></h2> 
+                                                            </div>
+                                                            <div class="sectiondois-texto">
+                                                                <?=$rsConteudo['texto']?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-opcoes">
+                                                <div class="cont-opcoes-icon">
+                                                    <div class="cont-icon">
+                                                        <a onclick="return confirm('Deseja realmente remover este conteúdo da página?')" href="bd/excluirConteudo.php?codigo=<?=$rsConteudo['id']?>&tabela=<?=$nomeTabela?>&pagina=admHeaderSobre.php?select-curiosidades=sectiondois_sobre">
+                                                            <img class="card-opcoes-icon" src="icons/error.png">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <?php
+                                                            if($rsConteudo['status'] == 1) {
+                                                        ?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admHeaderSobre.php?select-curiosidades=sectiondois_sobre">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-on-48.png">
+                                                            </a>
+                                                        <?php } else {?>
+                                                            <a href="bd/statusConteudoUnico.php?codigo=<?=$rsConteudo['id']?>&status=<?=$rsConteudo['status']?>&tabela=<?=$nomeTabela?>&pagina=admHeaderSobre.php?select-curiosidades=sectiondois_sobre">
+                                                                <img class="card-opcoes-icon" src="icons/toggle-off-48.png">
+                                                            </a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="cont-icon">
+                                                        <a class="btn-editar" onclick="resgatarDados(<?=$rsConteudo['id']?>, 'sectiondois')">
                                                             <img class="card-opcoes-icon" src="icons/edit.png">
                                                         </a>
                                                     </div>

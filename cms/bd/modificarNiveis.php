@@ -39,15 +39,31 @@
         {
 
             $codigo = $_GET['codigo'];
-
-            // Script para deletar registro do banco.
-            $sql = "DELETE FROM tblniveis WHERE id = ".$codigo;
-
-            //Verificando se o script foi executado com sucesso.   
-            if(mysqli_query($conexao, $sql))
-                header("location:../admNiveis.php");
+            
+            // Deletando todos os usuários associados a este nível, para poder deletá-lo.
+            $sql = "DELETE from tblusuarios WHERE codnivel = ".$codigo;
+            
+            // Se os usuários foram deletados com sucesso, deleta o nível.
+            if(mysqli_query($conexao, $sql)){
+                
+                // Script para deletar registro do banco.
+                $sql = "DELETE FROM tblniveis WHERE id = ".$codigo;
+                
+                //Verificando se o script foi executado com sucesso.  
+                if(mysqli_query($conexao, $sql))
+                    header("location:../admNiveis.php");
+                else
+                    echo($sql);
+                
+            }
             else
-                echo(ERRO_EXECUCAO_SCRIPT);
+                echo($sql);
+
+            
+            
+
+             
+            
 
         }
 

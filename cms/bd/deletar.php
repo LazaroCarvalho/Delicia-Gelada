@@ -14,7 +14,7 @@
 
         // Executando script no banco. Se der certo, volta a pagina Contatos. Se não, mosta mensagem.
         if(mysqli_query($conexao, $sql))
-            header('location:../"admContatos".php');
+            header('location:../admContatos.php');
         else
             echo("Erro ao deletar do banco");
 

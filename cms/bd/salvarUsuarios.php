@@ -25,12 +25,12 @@
         // Verifica se o registro está sendo inserido pela primeira vez ou sendo editado.
         if(strtoupper($_POST['submitUsuarios']) != "EDITAR")
         {
-
+            
             $senha = $_POST['txt_senha'];
-
+            
             // Criptografando a senha.
             $senhaCriptografada = md5($senha);
-
+            
             // Script para inserir os dados do usuário no banco.
             $sql = "INSERT INTO tblusuarios (usuario, nome, email, senha, codnivel, status)
             VALUES ('".$usuario."', '".$nome."', 
@@ -41,14 +41,17 @@
         else { // Caso o registro esteja sendo editado, cai neste else.
 
             // Verifica se o usuário desejou ou não alterar a senha.
-            if(isset($_GET['txt_senha']))
+            if(isset($_POST['txt_senha']))
             {
-
+                
                 $senha = $_POST['txt_senha'];
+            
+                // Criptografando a senha.
+                $senhaCriptografada = md5($senha);
 
                 // Script a ser executado caso o usuário tenha registrado uma nova senha.
                 $sql = "UPDATE tblusuarios SET usuario = '".$usuario."', nome = '".$nome."',
-                        email = '".$email."', senha = '".$senha."', 
+                        email = '".$email."', senha = '".$senhaCriptografada."', 
                         codnivel = ".$nivelId.", status = '".$status."' 
                         WHERE id = ".$_SESSION['codigo'];
 
@@ -64,8 +67,10 @@
 
         }
 
-        if(mysqli_query($conexao, $sql))
-            header('location:../admUsuarios.php');
+        if(mysqli_query($conexao, $sql)){
+            unset($_SESSION['codigo']);
+            header("location: ../admUsuarios.php");
+        }
         else
             echo(ERRO_EXECUCAO_SCRIPT);
 

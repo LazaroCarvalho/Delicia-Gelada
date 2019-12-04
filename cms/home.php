@@ -1,3 +1,5 @@
+    </body>
+</html>
 <?php 
     
     // Importando arquivos.
@@ -81,5 +83,3 @@
             <!-- Importando rodapé -->
             <?=$footer;?>
         </div>
-    </body>
-</html>

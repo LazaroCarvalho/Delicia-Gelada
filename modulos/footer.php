@@ -5,7 +5,7 @@
             "<div class='conteudo center'>
                 <div id='footer_informacoes'>
                     <div id='botao_sistema_interno'>
-                        <a href='cms-mvc/index.php'>Sistema Interno</a>
+                        <a href='mvc-cms/index.php'>Sistema Interno</a>
                     </div>
                     <div id='endereco_info'>
                         Endereço: R. Canal de Suez - Barueri - São Paulo
